@@ -21,14 +21,44 @@ const galleryItems = document.querySelectorAll('.gallery-item');
 let currentImageIndex = 0;
 let galleryImages = [];
 
+// Rotating hero section information
+const heroTitles = [
+  'Transforming Lives, <span class="highlight">One Act of Kindness</span> at a Time',
+  'Empowering Communities, <span class="highlight">Changing Futures</span>',
+  'Together We <span class="highlight">Make a Difference</span>',
+];
+const heroSubtitles = [
+  'Join us in making a difference in communities across Ghana.',
+  'Every donation brings hope to those who need it most.',
+  'Be part of a movement that transforms lives every day.',
+];
+let currentHeroIndex = 0;
+const titleEl = document.getElementById('rotating-title');
+const subtitleEl = document.getElementById('rotating-subtitle');
+function fadeOutIn(el, newContent) {
+  el.style.opacity = 0;
+  setTimeout(() => {
+    el.innerHTML = newContent;
+    el.style.opacity = 1;
+  }, 400);
+}
+function rotateHeroInfo() {
+  currentHeroIndex = (currentHeroIndex + 1) % heroTitles.length;
+  fadeOutIn(titleEl, heroTitles[currentHeroIndex]);
+  fadeOutIn(subtitleEl, heroSubtitles[currentHeroIndex]);
+}
+if (titleEl && subtitleEl) {
+  setInterval(rotateHeroInfo, 4000);
+}
+
 // Initialize gallery images
 function initGallery() {
     galleryImages = Array.from(galleryItems).map((item, index) => ({
         index: index,
         src: item.querySelector('img').src,
         alt: item.querySelector('img').alt,
-        title: item.querySelector('.gallery-content h4').textContent,
-        description: item.querySelector('.gallery-content p').textContent
+        title: item.querySelector('img').alt,
+        description: ''
     }));
 }
 
@@ -145,7 +175,7 @@ function createIntersectionObserver() {
     }, observerOptions);
     
     // Observe elements for animation
-    const animateElements = document.querySelectorAll('.project-card, .contact-item, .gallery-item, .stat-item');
+    const animateElements = document.querySelectorAll('.initiative-card, .contact-item, .gallery-item, .stat-item');
     animateElements.forEach(el => observer.observe(el));
 }
 
@@ -362,6 +392,84 @@ function addAnimationStyles() {
     document.head.appendChild(style);
 }
 
+// Animate Impact Pictures Numbers
+function animateImpactStats() {
+    const section = document.getElementById('impact-pictures');
+    if (!section) return;
+    const numbers = section.querySelectorAll('.impact-stat-number');
+    let animated = false;
+
+    function formatNumber(num, type) {
+        if (type === 'volunteers') return Math.floor(num) + '+';
+        if (type === 'communities') return Math.floor(num) + '+';
+        if (type === 'funds') return '₵' + Math.floor(num);
+        return num;
+    }
+
+    function runAnimation() {
+        if (animated) return;
+        animated = true;
+        numbers.forEach((el, idx) => {
+            const target = +el.getAttribute('data-target');
+            let start = 0;
+            let duration = 1500;
+            let startTime = null;
+            let type = idx === 0 ? 'volunteers' : idx === 1 ? 'communities' : 'funds';
+
+            function updateNumber(ts) {
+                if (!startTime) startTime = ts;
+                const progress = Math.min((ts - startTime) / duration, 1);
+                const value = Math.floor(progress * target);
+                el.textContent = formatNumber(value, type);
+                if (progress < 1) {
+                    requestAnimationFrame(updateNumber);
+                } else {
+                    el.textContent = formatNumber(target, type);
+                }
+            }
+            requestAnimationFrame(updateNumber);
+        });
+    }
+
+    // Animate immediately on load
+    runAnimation();
+}
+
+// Animated count-up for .stat-number
+function animateStatNumbers() {
+  const statItems = document.querySelectorAll('.stat-item');
+  statItems.forEach(item => {
+    const numberEl = item.querySelector('.stat-number');
+    const target = parseInt(item.dataset.target, 10);
+    let started = false;
+    if (!numberEl) return;
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !started) {
+          started = true;
+          let start = 0;
+          const duration = 1200;
+          const startTime = performance.now();
+          function updateNumber(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const value = Math.floor(progress * target);
+            numberEl.textContent = value;
+            if (progress < 1) {
+              requestAnimationFrame(updateNumber);
+            } else {
+              numberEl.textContent = target;
+            }
+          }
+          requestAnimationFrame(updateNumber);
+          observer.unobserve(item);
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(item);
+  });
+}
+
 // Initialize all functionality
 function init() {
     // Add animation styles
@@ -417,6 +525,10 @@ function init() {
     
     // Initialize stats animation on page load
     setTimeout(animateStats, 1000);
+    
+    animateImpactStats();
+    
+    animateStatNumbers();
 }
 
 // Wait for DOM to load
@@ -471,4 +583,25 @@ loadingStyle.textContent = `
         }
     }
 `;
-document.head.appendChild(loadingStyle); 
+document.head.appendChild(loadingStyle);
+
+// Use the already declared 'galleryItems' for lightbox functionality
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCaption = document.getElementById('lightbox-caption');
+
+// Add click event to each gallery image to open the lightbox
+const galleryImages = document.querySelectorAll('.gallery-item img');
+galleryImages.forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.classList.add('active');
+    lightboxImg.src = img.src;
+    lightboxCaption.textContent = img.alt;
+  });
+});
+
+lightboxClose.addEventListener('click', () => {
+  lightbox.classList.remove('active');
+});
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) lightbox.classList.remove('active');
+}); 

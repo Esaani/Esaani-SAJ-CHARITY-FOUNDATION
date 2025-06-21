@@ -20,9 +20,11 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2>SAJ Foundation</h2>
+        <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between;">
+            <div class="nav-logo" style="display: flex; align-items: center; gap: 0.75rem;">
+                <img src="logo/SAJ.png" alt="SAJ Foundation Logo" class="nav-logo-img" style="height: 80px; width: 89px;">
+            
+        
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
@@ -55,19 +57,20 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-background">
+            <div class="hero-image-overlay">
+                <img src="images/cause-1.jpg" alt="Community impact" class="hero-bg-image">
+                <img src="images/cause-3.jpg" alt="Educational support" class="hero-bg-image">
+                <img src="images/event-1.jpg" alt="Community events" class="hero-bg-image">
+            </div>
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
             <div class="container">
-                <h1 class="hero-title">
-                    Transforming Lives, 
-                    <span class="highlight">One Act of Kindness</span> 
-                    at a Time
+                <h1 class="hero-title" id="rotating-title">
+                    Transforming Lives, <span class="highlight">One Act of Kindness</span> at a Time
                 </h1>
-                <p class="hero-subtitle">
-                    Join us in making a difference in communities across Ghana. 
-                    Every donation, every volunteer hour, every act of compassion 
-                    brings hope to those who need it most.
+                <p class="hero-subtitle" id="rotating-subtitle">
+                    Join us in making a difference in communities across Ghana.
                 </p>
                 <div class="hero-buttons">
                     <a href="#donate" class="btn btn-primary">
@@ -101,135 +104,103 @@
                         Through our comprehensive programs, we address the root causes of poverty and inequality.
                     </p>
                     <p class="about-text">
-                        Our approach combines immediate relief with long-term development strategies, ensuring that 
-                        the communities we serve can build sustainable futures for themselves and future generations.
+                        What started as a personal mission has blossomed into a collective movement of passionate volunteers and supporters.
+                        Together, we work tirelessly to ensure that underprivileged communities gain access to essential resources,
+                        including quality education, clean water, nutritious food, and opportunities for skills development.
                     </p>
                     <div class="impact-stats">
-                        <div class="stat-item" data-target="5">
-                            <div class="stat-number">0</div>
+                        <div class="stat-item">
+                            <div class="stat-number">2</div>
                             <div class="stat-label">Years of Impact</div>
                         </div>
-                        <div class="stat-item" data-target="1200">
-                            <div class="stat-number">0</div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
                             <div class="stat-label">People Helped</div>
                         </div>
-                        <div class="stat-item" data-target="300">
-                            <div class="stat-number">0</div>
+                        <div class="stat-item">
+                            <div class="stat-number">10</div>
                             <div class="stat-label">Donors</div>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-hands-helping"></i>
-                        <p>Community Impact Image</p>
-                    </div>
+                    <img src="images/cause-3.jpg" alt="Community impact and education" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <!-- What We Do Section -->
+    <section id="projects" class="what-we-do">
         <div class="container">
             <h2 class="section-title text-center">What We Do</h2>
             <p class="section-subtitle text-center">
                 Our comprehensive programs address the most pressing needs in our communities
             </p>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3>Community Feeding</h3>
-                    <p>Providing nutritious meals to families in need, ensuring no one goes hungry in our communities.</p>
-                    <div class="project-overlay">
-                        <h4>Community Feeding</h4>
-                        <p>Weekly meal programs serving over 200 families</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3>Health Outreach</h3>
-                    <p>Bringing essential healthcare services to remote communities through mobile clinics and health education.</p>
-                    <div class="project-overlay">
-                        <h4>Health Outreach</h4>
-                        <p>Mobile clinics serving 15+ communities monthly</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Educational Support</h3>
-                    <p>Supporting children's education through school supplies, tutoring programs, and scholarship opportunities.</p>
-                    <div class="project-overlay">
-                        <h4>Educational Support</h4>
-                        <p>Supporting 150+ students annually</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3>Housing Assistance</h3>
-                    <p>Helping families secure safe and stable housing through renovation projects and housing support programs.</p>
-                    <div class="project-overlay">
-                        <h4>Housing Assistance</h4>
-                        <p>Renovated 25+ homes for families in need</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <section id="location" class="location">
-        <div class="container">
-            <div class="location-grid">
-                <div class="location-info">
-                    <h2 class="section-title">Find Us</h2>
-                    <p class="section-subtitle">
-                        Visit our office or reach out to learn more about our programs
-                    </p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Address</h4>
-                                <p>Accra, Ghana<br>West Africa</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+233 XX XXX XXXX</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>info@sajfoundation.org</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <h4>Office Hours</h4>
-                                <p>Monday - Friday: 8AM - 5PM<br>Saturday: 9AM - 2PM</p>
+            <div class="initiatives-grid">
+                <div class="initiative-card">
+                    <div class="card-image">
+                        <img src="images/cause-1.jpg" alt="Community feeding program">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <h4>Health Outreach</h4>
+                                <p>Weekly meal programs serving over 200 families with nutritious food, ensuring no child goes hungry in our communities.</p>
                             </div>
                         </div>
                     </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Health Outreach</h3>
+                        <p>Providing nutritious meals to families in need, ensuring no one goes hungry in our communities.</p>
+                    </div>
                 </div>
-                <div class="map-container">
-                    <div class="map-placeholder">
-                        <i class="fas fa-map"></i>
-                        <p>Interactive Map</p>
-                        <small>Google Maps integration</small>
+                
+                <div class="initiative-card">
+                    <div class="card-image">
+                        <img src="images/cause-2.jpg" alt="Health outreach program">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <h4>Educational Support</h4>
+                                <p>Mobile clinics and health education programs serving 15+ communities monthly, bringing essential healthcare to remote areas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Educational Support</h3>
+                        <p>Bringing essential healthcare services to remote communities through mobile clinics and health education.</p>
+                    </div>
+                </div>
+                
+                <div class="initiative-card">
+                    <div class="card-image">
+                        <img src="images/cause-3.jpg" alt="Educational support program">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h4>Community Feeding</h4>
+                                <p>Supporting 150+ students annually with school supplies, tutoring programs, and scholarship opportunities for brighter futures.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Community Feeding</h3>
+                        <p>Supporting children's education through school supplies, tutoring programs, and scholarship opportunities.</p>
                     </div>
                 </div>
             </div>
@@ -239,121 +210,46 @@
     <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <div class="container">
-            <h2 class="section-title text-center">Our Impact in Pictures</h2>
+            <h2 class="section-title text-center">Gallery</h2>
             <p class="section-subtitle text-center">
-                See the faces and stories behind our mission
+                Explore moments from our events and outreach programs
             </p>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-category="community">
-                    <img src="./images/cause-1.jpg" alt="Community feeding program" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-content">
-                            <h4>Community Feeding</h4>
-                            <p>Providing nutritious meals to families in need</p>
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
+            <div class="gallery-container">
+                <div class="gallery-item" tabindex="0">
+                    <img src="gallery/0278_2024 SAJ Foundation @ Royal Promise By Bliss Studios.jpg" alt="Royal Promise Event">
+                    <div class="gallery-caption">Royal Promise Event</div>
                 </div>
-                <div class="gallery-item" data-category="health">
-                    <img src="./images/cause-2.jpg" alt="Health outreach program" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-content">
-                            <h4>Health Outreach</h4>
-                            <p>Bringing healthcare to remote communities</p>
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="gallery/edu1.jpg" alt="Education Outreach">
+                    <div class="gallery-caption">Education Outreach</div>
                 </div>
-                <div class="gallery-item" data-category="education">
-                    <img src="./images/cause-3.jpg" alt="Educational support program" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-content">
-                            <h4>Educational Support</h4>
-                            <p>Supporting children's education and development</p>
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="gallery/IMG-175.jpg" alt="Community Gathering">
+                    <div class="gallery-caption">Community Gathering</div>
                 </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="./images/event-1.jpg" alt="Community event" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-content">
-                            <h4>Community Events</h4>
-                            <p>Bringing communities together</p>
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="gallery/lov1.jpg" alt="Love in Action 1">
+                    <div class="gallery-caption">Love in Action 1</div>
                 </div>
-                <div class="gallery-item" data-category="volunteers">
-                    <img src="./images/cause-4.jpg" alt="Volunteer work" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-content">
-                            <h4>Volunteer Work</h4>
-                            <p>Dedicated volunteers making a difference</p>
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="gallery/lov2.jpg" alt="Love in Action 2">
+                    <div class="gallery-caption">Love in Action 2</div>
                 </div>
-                <div class="gallery-item" data-category="impact">
-                    <img src="./images/cause-5.jpg" alt="Impact stories" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-content">
-                            <h4>Impact Stories</h4>
-                            <p>Real stories of transformation</p>
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="gallery/lov3.jpg" alt="Love in Action 3">
+                    <div class="gallery-caption">Love in Action 3</div>
                 </div>
-                <div class="gallery-item" data-category="community">
-                    <img src="./images/cause-6.jpg" alt="Community celebration" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-content">
-                            <h4>Community Celebration</h4>
-                            <p>Celebrating our achievements together</p>
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="gallery/lov4.jpg" alt="Love in Action 4">
+                    <div class="gallery-caption">Love in Action 4</div>
                 </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="./images/event-2.jpg" alt="Special event" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-content">
-                            <h4>Special Events</h4>
-                            <p>Memorable moments and celebrations</p>
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="gallery/mg2.jpg" alt="Moments Group 2">
+                    <div class="gallery-caption">Moments Group 2</div>
                 </div>
-                <div class="gallery-item" data-category="impact">
-                    <img src="./images/IMG_9272.jpg" alt="Foundation impact" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-content">
-                            <h4>Foundation Impact</h4>
-                            <p>Our mission in action</p>
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="background">
-                    <img src="./images/bg_3.jpg" alt="Background image" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-content">
-                            <h4>Our Foundation</h4>
-                            <p>Building stronger communities together</p>
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="background">
-                    <img src="./images/bg_4.jpg" alt="Background image" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-content">
-                            <h4>Community Support</h4>
-                            <p>Supporting families and individuals</p>
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            <div class="gallery-view-more" style="text-align:center; margin-top:2rem;">
+                <a href="gallery.html" class="btn btn-primary" style="padding: 0.9rem 2.2rem; font-size: 1.1rem; border-radius: 8px;">View More</a>
             </div>
         </div>
     </section>
@@ -469,10 +365,7 @@
                     </div>
                 </div>
                 <div class="donate-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-hands-helping"></i>
-                        <p>Beneficiary Image</p>
-                    </div>
+                    <img src="images/cause-1.jpg" alt="Beneficiary receiving support" loading="lazy">
                 </div>
             </div>
         </div>
@@ -537,20 +430,9 @@
 
     <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox">
-        <div class="lightbox-content">
-            <span class="lightbox-close">&times;</span>
-            <img id="lightbox-image" src="" alt="">
-            <div class="lightbox-caption">
-                <h4 id="lightbox-title"></h4>
-                <p id="lightbox-description"></p>
-            </div>
-            <button class="lightbox-nav lightbox-prev">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="lightbox-nav lightbox-next">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+        <div id="lightbox-caption"></div>
     </div>
 </body>
 </html> 
