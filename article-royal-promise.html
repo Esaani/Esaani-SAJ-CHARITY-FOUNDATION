@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAJ Foundation Launches Royal Promise Event - SAJ Charity Foundation</title>
+    <meta name="description" content="Read about the SAJ Foundation's Royal Promise Event, featuring community leaders, volunteers, and new outreach programs.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .article-hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('gallery/0278_2024 SAJ Foundation @ Royal Promise By Bliss Studios.jpg') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .article-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .article-hero .article-date {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .article-hero .article-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .article-content {
+            line-height: 1.8;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 25px;
+        }
+        
+        .article-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin: 40px 0 20px 0;
+        }
+        
+        .article-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin: 30px 0 15px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--light-blue), #E0F2FE);
+            border-left: 4px solid var(--primary-blue);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .highlight-box h4 {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .social-share {
+            display: flex;
+            gap: 15px;
+            margin: 40px 0;
+            justify-content: center;
+        }
+        
+        .social-share a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-share a:hover {
+            transform: translateY(-2px);
+        }
+        
+        .share-facebook { background: #1877F2; }
+        .share-twitter { background: #1DA1F2; }
+        .share-linkedin { background: #0077B5; }
+        .share-whatsapp { background: #25D366; }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-top: 1px solid #E5E7EB;
+            border-bottom: 1px solid #E5E7EB;
+            margin: 40px 0;
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .reading-time {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .related-articles {
+            background: var(--light-gray);
+            padding: 60px 20px;
+            margin-top: 60px;
+        }
+        
+        .related-articles h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--dark-gray);
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .related-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .related-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .related-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .related-card-content {
+            padding: 20px;
+        }
+        
+        .related-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+        
+        .related-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .related-card a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .article-hero .article-title {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .social-share {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo/SAJ.png" alt="SAJ Foundation Logo" class="nav-logo-img">
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#gallery" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="news.html" class="nav-link active">News</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#donate" class="nav-link donate-btn">Donate</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Hero Section -->
+    <section class="article-hero">
+        <div class="article-hero-content">
+            <div class="article-date">June 3, 2024</div>
+            <h1 class="article-title">SAJ Foundation Launches Royal Promise Event</h1>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="article-container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="news.html">News</a>
+            <span>/</span>
+            <span>Royal Promise Event</span>
+        </div>
+        
+        <article>
+            <div class="article-content">
+                <p>The SAJ Foundation proudly launched the Royal Promise Event, bringing together community leaders, volunteers, and beneficiaries for an inspiring day of celebration and commitment to community service.</p>
+                
+                <div class="highlight-box">
+                    <h4>🎉 Event Highlights</h4>
+                    <p>Over 200 community members attended the Royal Promise Event, featuring inspiring speeches, live performances, and the announcement of new outreach programs designed to further our mission of transforming lives.</p>
+                </div>
+                
+                <p>The event, held at the prestigious Royal Promise venue, featured inspiring speeches from community leaders, live performances from local artists, and the announcement of several new outreach programs designed to further our mission of transforming lives through compassion and education.</p>
+                
+                <h2>New Programs Announced</h2>
+                <p>Among the highlights of the day was the unveiling of our new "Future Leaders" scholarship program, which will provide educational support to 50 deserving students from underprivileged backgrounds. The program includes full tuition coverage, mentorship opportunities, and career guidance.</p>
+                
+                <h3>Community Impact</h3>
+                <p>Our team is incredibly grateful for the overwhelming support of all donors, partners, and volunteers who made this event possible. The success of the Royal Promise Event demonstrates the power of community collaboration and the impact we can achieve when we work together.</p>
+                
+                <div class="highlight-box">
+                    <h4>💝 Special Thanks</h4>
+                    <p>Special thanks to our keynote speakers, including community leaders and beneficiaries who shared their inspiring stories of transformation and hope. Their testimonies reminded us all of the real impact our programs have on individual lives and families.</p>
+                </div>
+                
+                <p>Looking ahead, we are excited to build on the momentum from this event and continue expanding our programs to reach more communities in need. Together, we are making a lasting impact that will benefit generations to come.</p>
+                
+                <p>For those who couldn't attend the event, we encourage you to stay connected with us through our newsletter and social media channels for updates on our ongoing programs and future events.</p>
+            </div>
+            
+            <!-- Social Share -->
+            <div class="social-share">
+                <a href="#" class="share-facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    Share on Facebook
+                </a>
+                <a href="#" class="share-twitter">
+                    <i class="fab fa-twitter"></i>
+                    Share on Twitter
+                </a>
+                <a href="#" class="share-linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    Share on LinkedIn
+                </a>
+                <a href="#" class="share-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    Share on WhatsApp
+                </a>
+            </div>
+            
+            <!-- Article Meta -->
+            <div class="article-meta">
+                <div class="author-info">
+                    <div class="author-avatar">SAJ</div>
+                    <div>
+                        <div style="font-weight: 600; color: var(--dark-gray);">SAJ Foundation Team</div>
+                        <div style="color: var(--text-light); font-size: 0.9rem;">Community Outreach</div>
+                    </div>
+                </div>
+                <div class="reading-time">
+                    <i class="fas fa-clock"></i>
+                    5 min read
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="related-articles">
+        <div class="container">
+            <h3>Related Articles</h3>
+            <div class="related-grid">
+                <div class="related-card">
+                    <img src="gallery/edu1.jpg" alt="Education Outreach">
+                    <div class="related-card-content">
+                        <h4>Education Outreach Empowers Local Youth</h4>
+                        <p>Our Education Outreach program continues to empower local youth with access to quality learning resources...</p>
+                        <a href="article-education-outreach.html">Read More &rarr;</a>
+                    </div>
+                </div>
+                <div class="related-card">
+                    <img src="gallery/IMG-175.jpg" alt="Community Gathering">
+                    <div class="related-card-content">
+                        <h4>Community Gathering: Building Stronger Bonds</h4>
+                        <p>The annual Community Gathering brought together families, friends, and supporters for a day of fun...</p>
+                        <a href="article-community-gathering.html">Read More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SAJ Charity Foundation</h3>
+                    <p>Transforming lives through compassion, education, and sustainable community support in Ghana.</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/company/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#projects">Our Programs</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="index.html#donate">Donate</a></li>
+                        <li><a href="index.html#contact">Volunteer</a></li>
+                        <li><a href="index.html#contact">Partner With Us</a></li>
+                        <li><a href="index.html#contact">Fundraise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Stay updated with our latest news and impact stories.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SAJ Charity Foundation. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest News & Articles - SAJ Charity Foundation</title>
+    <meta name="description" content="Stay updated with the latest news, events, and impact stories from SAJ Charity Foundation.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .news-hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .news-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .news-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .news-filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px 45px 12px 20px;
+            border: 2px solid #E5E7EB;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+        
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+        
+        .category-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 8px 20px;
+            border: 2px solid var(--primary-blue);
+            background: transparent;
+            color: var(--primary-blue);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .news-card-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .news-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .news-card:hover .news-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .news-card-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary-blue);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .news-card-date {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+        
+        .news-card-content {
+            padding: 25px;
+        }
+        
+        .news-card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .news-card-excerpt {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .news-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .news-card-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .news-card-author i {
+            color: var(--primary-blue);
+        }
+        
+        .news-card-read-time {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .news-card-read-time i {
+            color: var(--text-light);
+        }
+        
+        .news-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.3s ease;
+        }
+        
+        .news-card-link:hover {
+            gap: 12px;
+        }
+        
+        .news-pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+        
+        .pagination-btn {
+            padding: 10px 15px;
+            border: 2px solid var(--primary-blue);
+            background: transparent;
+            color: var(--primary-blue);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .pagination-btn.active,
+        .pagination-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+        
+        .newsletter-section {
+            background: var(--light-gray);
+            padding: 60px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-content h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+        
+        .newsletter-content p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #E5E7EB;
+            border-radius: 25px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            padding: 12px 25px;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--secondary-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .news-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .news-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                max-width: none;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo/SAJ.png" alt="SAJ Foundation Logo" class="nav-logo-img">
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#gallery" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="news.html" class="nav-link active">News</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#donate" class="nav-link donate-btn">Donate</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- News Hero Section -->
+    <section class="news-hero">
+        <div class="container">
+            <h1>Latest News & Articles</h1>
+            <p>Stay updated with our latest impact stories, community events, and program updates from SAJ Charity Foundation.</p>
+        </div>
+    </section>
+
+    <!-- News Content -->
+    <section class="news-container">
+        <!-- Filters -->
+        <div class="news-filters">
+            <div class="search-box">
+                <input type="text" placeholder="Search articles..." id="searchInput">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="events">Events</button>
+                <button class="category-btn" data-category="education">Education</button>
+                <button class="category-btn" data-category="community">Community</button>
+            </div>
+        </div>
+
+        <!-- News Grid -->
+        <div class="news-grid" id="newsGrid">
+            <article class="news-card" data-category="events">
+                <div class="news-card-image">
+                    <img src="gallery/0278_2024 SAJ Foundation @ Royal Promise By Bliss Studios.jpg" alt="Royal Promise Event">
+                    <div class="news-card-category">Events</div>
+                    <div class="news-card-date">Jun 3, 2024</div>
+                </div>
+                <div class="news-card-content">
+                    <h3 class="news-card-title">SAJ Foundation Launches Royal Promise Event</h3>
+                    <p class="news-card-excerpt">The SAJ Foundation proudly launched the Royal Promise Event, bringing together community leaders, volunteers, and beneficiaries for an inspiring day of celebration and commitment to community service.</p>
+                    <div class="news-card-meta">
+                        <div class="news-card-author">
+                            <i class="fas fa-user"></i>
+                            SAJ Foundation Team
+                        </div>
+                        <div class="news-card-read-time">
+                            <i class="fas fa-clock"></i>
+                            5 min read
+                        </div>
+                    </div>
+                    <a href="article-royal-promise.html" class="news-card-link">
+                        Read Full Article
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <article class="news-card" data-category="education">
+                <div class="news-card-image">
+                    <img src="gallery/edu1.jpg" alt="Education Outreach">
+                    <div class="news-card-category">Education</div>
+                    <div class="news-card-date">May 28, 2024</div>
+                </div>
+                <div class="news-card-content">
+                    <h3 class="news-card-title">Education Outreach Empowers Local Youth</h3>
+                    <p class="news-card-excerpt">Our Education Outreach program continues to make significant strides in empowering local youth with access to quality learning resources and opportunities.</p>
+                    <div class="news-card-meta">
+                        <div class="news-card-author">
+                            <i class="fas fa-user"></i>
+                            SAJ Foundation Team
+                        </div>
+                        <div class="news-card-read-time">
+                            <i class="fas fa-clock"></i>
+                            4 min read
+                        </div>
+                    </div>
+                    <a href="article-education-outreach.html" class="news-card-link">
+                        Read Full Article
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <article class="news-card" data-category="community">
+                <div class="news-card-image">
+                    <img src="gallery/IMG-175.jpg" alt="Community Gathering">
+                    <div class="news-card-category">Community</div>
+                    <div class="news-card-date">May 15, 2024</div>
+                </div>
+                <div class="news-card-content">
+                    <h3 class="news-card-title">Community Gathering: Building Stronger Bonds</h3>
+                    <p class="news-card-excerpt">The annual Community Gathering brought together families, friends, and supporters for a day filled with joy, connection, and celebration.</p>
+                    <div class="news-card-meta">
+                        <div class="news-card-author">
+                            <i class="fas fa-user"></i>
+                            SAJ Foundation Team
+                        </div>
+                        <div class="news-card-read-time">
+                            <i class="fas fa-clock"></i>
+                            3 min read
+                        </div>
+                    </div>
+                    <a href="article-community-gathering.html" class="news-card-link">
+                        Read Full Article
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Pagination -->
+        <div class="news-pagination">
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">2</button>
+            <button class="pagination-btn">3</button>
+            <button class="pagination-btn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h3>Stay Updated</h3>
+            <p>Subscribe to our newsletter to receive the latest news, impact stories, and updates about our programs directly in your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SAJ Charity Foundation</h3>
+                    <p>Transforming lives through compassion, education, and sustainable community support in Ghana.</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/company/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#projects">Our Programs</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="index.html#donate">Donate</a></li>
+                        <li><a href="index.html#contact">Volunteer</a></li>
+                        <li><a href="index.html#contact">Partner With Us</a></li>
+                        <li><a href="index.html#contact">Fundraise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Stay updated with our latest news and impact stories.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SAJ Charity Foundation. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Search and filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const newsCards = document.querySelectorAll('.news-card');
+
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                filterNews();
+            });
+
+            // Category filter functionality
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    filterNews();
+                });
+            });
+
+            function filterNews() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+
+                newsCards.forEach(card => {
+                    const title = card.querySelector('.news-card-title').textContent.toLowerCase();
+                    const excerpt = card.querySelector('.news-card-excerpt').textContent.toLowerCase();
+                    const category = card.dataset.category;
+                    
+                    const matchesSearch = title.includes(searchTerm) || excerpt.includes(searchTerm);
+                    const matchesCategory = activeCategory === 'all' || category === activeCategory;
+
+                    if (matchesSearch && matchesCategory) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

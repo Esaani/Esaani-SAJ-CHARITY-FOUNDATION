@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Gathering: Building Stronger Bonds - SAJ Charity Foundation</title>
+    <meta name="description" content="Read about the annual Community Gathering that brought together families, friends, and supporters for a day of fun and connection.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .article-hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('gallery/IMG-175.jpg') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .article-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .article-hero .article-date {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .article-hero .article-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .article-content {
+            line-height: 1.8;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 25px;
+        }
+        
+        .article-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin: 40px 0 20px 0;
+        }
+        
+        .article-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin: 30px 0 15px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--light-blue), #E0F2FE);
+            border-left: 4px solid var(--primary-blue);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .highlight-box h4 {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .social-share {
+            display: flex;
+            gap: 15px;
+            margin: 40px 0;
+            justify-content: center;
+        }
+        
+        .social-share a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-share a:hover {
+            transform: translateY(-2px);
+        }
+        
+        .share-facebook { background: #1877F2; }
+        .share-twitter { background: #1DA1F2; }
+        .share-linkedin { background: #0077B5; }
+        .share-whatsapp { background: #25D366; }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-top: 1px solid #E5E7EB;
+            border-bottom: 1px solid #E5E7EB;
+            margin: 40px 0;
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .reading-time {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .related-articles {
+            background: var(--light-gray);
+            padding: 60px 20px;
+            margin-top: 60px;
+        }
+        
+        .related-articles h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--dark-gray);
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .related-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .related-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .related-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .related-card-content {
+            padding: 20px;
+        }
+        
+        .related-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+        
+        .related-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .related-card a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .article-hero .article-title {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .social-share {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo/SAJ.png" alt="SAJ Foundation Logo" class="nav-logo-img">
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#gallery" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="news.html" class="nav-link active">News</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#donate" class="nav-link donate-btn">Donate</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Hero Section -->
+    <section class="article-hero">
+        <div class="article-hero-content">
+            <div class="article-date">May 15, 2024</div>
+            <h1 class="article-title">Community Gathering: Building Stronger Bonds</h1>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="article-container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="news.html">News</a>
+            <span>/</span>
+            <span>Community Gathering</span>
+        </div>
+        
+        <article>
+            <div class="article-content">
+                <p>The annual Community Gathering brought together families, friends, and supporters for a day filled with joy, connection, and celebration of our shared commitment to building a stronger, more compassionate community.</p>
+                
+                <div class="highlight-box">
+                    <h4>🎉 Event Highlights</h4>
+                    <p>Over 300 community members joined us for a day of fun activities, inspiring conversations, and meaningful connections. The event featured live music, children's activities, food sharing, and opportunities to learn about our ongoing programs.</p>
+                </div>
+                
+                <h2>Strengthening Community Bonds</h2>
+                <p>This year's gathering was particularly special as it marked our 5th anniversary of bringing the community together. The event provided a perfect opportunity for new families to connect with existing members, share stories, and learn about the various ways they can get involved in our programs.</p>
+                
+                <h3>Activities and Entertainment</h3>
+                <p>Children enjoyed face painting, games, and educational activities while adults participated in workshops on community development, health awareness, and sustainable living practices. Local musicians provided entertainment throughout the day, creating a festive atmosphere that brought smiles to everyone's faces.</p>
+                
+                <div class="highlight-box">
+                    <h4>🤝 New Partnerships</h4>
+                    <p>We're excited to announce new partnerships with local businesses and organizations that will help us expand our community programs and provide even more support to families in need.</p>
+                </div>
+                
+                <h2>Volunteer Recognition</h2>
+                <p>A special highlight of the day was the recognition ceremony for our dedicated volunteers who have contributed countless hours to our programs. Their selfless service has made a significant impact on the lives of many families in our community.</p>
+                
+                <h3>Looking Ahead</h3>
+                <p>As we reflect on the success of this year's gathering, we're already planning for next year's event. We're committed to making it even bigger and better, with more activities, more opportunities for connection, and more ways for community members to get involved in our mission.</p>
+                
+                <p>We extend our heartfelt thanks to everyone who attended, volunteered, and contributed to making this year's Community Gathering such a memorable and meaningful event. Together, we're building a stronger, more connected community that supports and uplifts all its members.</p>
+            </div>
+            
+            <!-- Social Share -->
+            <div class="social-share">
+                <a href="#" class="share-facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    Share on Facebook
+                </a>
+                <a href="#" class="share-twitter">
+                    <i class="fab fa-twitter"></i>
+                    Share on Twitter
+                </a>
+                <a href="#" class="share-linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    Share on LinkedIn
+                </a>
+                <a href="#" class="share-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    Share on WhatsApp
+                </a>
+            </div>
+            
+            <!-- Article Meta -->
+            <div class="article-meta">
+                <div class="author-info">
+                    <div class="author-avatar">SAJ</div>
+                    <div>
+                        <div style="font-weight: 600; color: var(--dark-gray);">SAJ Foundation Team</div>
+                        <div style="color: var(--text-light); font-size: 0.9rem;">Community Programs</div>
+                    </div>
+                </div>
+                <div class="reading-time">
+                    <i class="fas fa-clock"></i>
+                    3 min read
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="related-articles">
+        <div class="container">
+            <h3>Related Articles</h3>
+            <div class="related-grid">
+                <div class="related-card">
+                    <img src="gallery/0278_2024 SAJ Foundation @ Royal Promise By Bliss Studios.jpg" alt="Royal Promise Event">
+                    <div class="related-card-content">
+                        <h4>SAJ Foundation Launches Royal Promise Event</h4>
+                        <p>The SAJ Foundation proudly launched the Royal Promise Event, bringing together community leaders...</p>
+                        <a href="article-royal-promise.html">Read More &rarr;</a>
+                    </div>
+                </div>
+                <div class="related-card">
+                    <img src="gallery/edu1.jpg" alt="Education Outreach">
+                    <div class="related-card-content">
+                        <h4>Education Outreach Empowers Local Youth</h4>
+                        <p>Our Education Outreach program continues to empower local youth with access to quality learning resources...</p>
+                        <a href="article-education-outreach.html">Read More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SAJ Charity Foundation</h3>
+                    <p>Transforming lives through compassion, education, and sustainable community support in Ghana.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#projects">Our Programs</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="index.html#donate">Donate</a></li>
+                        <li><a href="index.html#contact">Volunteer</a></li>
+                        <li><a href="index.html#contact">Partner With Us</a></li>
+                        <li><a href="index.html#contact">Fundraise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Stay updated with our latest news and impact stories.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SAJ Charity Foundation. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html> 
