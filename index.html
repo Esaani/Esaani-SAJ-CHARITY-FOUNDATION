@@ -19,40 +19,170 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between;">
-            <div class="nav-logo" style="display: flex; align-items: center; gap: 0.75rem;">
-                <img src="logo/SAJ.png" alt="SAJ Foundation Logo" class="nav-logo-img" style="height: 80px; width: 89px;">
-            
-        
+    <nav class="navbar" id="navbar" style="background:#fff; box-shadow:0 2px 16px rgba(37,99,235,0.07); position:sticky; top:0; z-index:100;">
+        <div class="nav-container" style="display:flex; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto; padding:0.7rem 2rem;">
+            <div class="nav-logo" style="display:flex; align-items:center; gap:0.7rem;">
+                <img src="logo/SAJ.png" alt="SAJ Foundation Logo" class="nav-logo-img" style="height:44px; width:auto;">
+                <span style="font-weight:700; font-size:1.25rem; color:var(--primary-blue); letter-spacing:1px;">SAJ Foundation</span>
             </div>
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#gallery" class="nav-link">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#donate" class="nav-link donate-btn">Donate</a>
-                </li>
+            <ul class="nav-menu" id="nav-menu" style="display:flex; gap:2.2rem; align-items:center; list-style:none; margin:0; padding:0;">
+                <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="news.html" class="nav-link">News</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="index.html#donate" class="nav-link donate-btn" style="background:var(--primary-blue); color:#fff; border-radius:6px; padding:0.5rem 1.2rem;">Donate</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="hamburger" id="hamburger" style="display:none; flex-direction:column; gap:5px; cursor:pointer; margin-left:1.5rem;">
+                <span class="bar" style="width:28px; height:3px; background:var(--primary-blue); border-radius:2px; display:block;"></span>
+                <span class="bar" style="width:28px; height:3px; background:var(--primary-blue); border-radius:2px; display:block;"></span>
+                <span class="bar" style="width:28px; height:3px; background:var(--primary-blue); border-radius:2px; display:block;"></span>
             </div>
         </div>
+        <!-- Mobile Drawer -->
+        <div id="mobile-drawer" class="mobile-drawer">
+            <div class="drawer-header">
+                <img src="logo/SAJ.png" alt="SAJ Foundation Logo" class="drawer-logo">
+                <button class="drawer-close" id="drawer-close" aria-label="Close menu">&times;</button>
+            </div>
+            <ul class="drawer-menu">
+                <li><a href="index.html#home">Home <span class="drawer-arrow">&#8250;</span></a></li>
+                <li><a href="index.html#about">About <span class="drawer-arrow">&#8250;</span></a></li>
+                <li><a href="index.html#projects">Projects <span class="drawer-arrow">&#8250;</span></a></li>
+                <li><a href="gallery.html">Gallery <span class="drawer-arrow">&#8250;</span></a></li>
+                <li><a href="news.html">News <span class="drawer-arrow">&#8250;</span></a></li>
+                <li><a href="index.html#contact">Contact <span class="drawer-arrow">&#8250;</span></a></li>
+                <li><a href="index.html#donate" class="drawer-donate">Donate <span class="drawer-arrow">&#8250;</span></a></li>
+            </ul>
+            <div class="drawer-contact">
+                <div><i class="fas fa-envelope"></i> info@sajfoundation.com</div>
+                <div><i class="fas fa-phone"></i> +233 123 456 789</div>
+            </div>
+            <div class="drawer-social">
+                <a href="https://twitter.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://facebook.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com/company/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div id="drawer-backdrop" class="drawer-backdrop"></div>
     </nav>
+    <style>
+    .mobile-drawer {
+        position: fixed;
+        top: 0; left: 0;
+        width: 85vw; max-width: 340px;
+        height: 100vh;
+        background: #17223b;
+        color: #fff;
+        z-index: 9999;
+        transform: translateX(-100%);
+        transition: transform 0.35s cubic-bezier(.4,2,.6,1);
+        box-shadow: 2px 0 24px rgba(37,99,235,0.13);
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+    .mobile-drawer.open { transform: translateX(0); }
+    .drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.2rem 1.5rem 0.7rem 1.5rem;
+        border-bottom: 1px solid #22305a;
+    }
+    .drawer-logo { height: 38px; width: auto; }
+    .drawer-close {
+        background: none; border: none; color: #fff;
+        font-size: 2.1rem; cursor: pointer; line-height: 1;
+    }
+    .drawer-menu {
+        list-style: none; margin: 0; padding: 1.5rem 0 0 0;
+        flex: 1 1 auto;
+    }
+    .drawer-menu li { border-bottom: 1px solid #22305a; }
+    .drawer-menu a {
+        display: flex; align-items: center; justify-content: space-between;
+        color: #fff; text-decoration: none; font-size: 1.13rem; padding: 1.1rem 1.5rem;
+        transition: background 0.2s, color 0.2s;
+    }
+    .drawer-menu a:hover, .drawer-menu a:focus {
+        background: var(--primary-blue, #2563eb);
+        color: #fff;
+    }
+    .drawer-arrow {
+        display: inline-block;
+        background: var(--primary-blue, #2563eb);
+        color: #fff;
+        border-radius: 4px;
+        font-size: 1.2rem;
+        width: 28px; height: 28px;
+        display: flex; align-items: center; justify-content: center;
+        margin-left: 1.2rem;
+    }
+    .drawer-donate {
+        background: var(--primary-blue, #2563eb);
+        color: #fff !important;
+        border-radius: 6px;
+        margin: 0.7rem 1.5rem;
+        padding: 0.9rem 1.5rem;
+        font-weight: 600;
+        display: flex; align-items: center; justify-content: space-between;
+    }
+    .drawer-contact {
+        padding: 1.2rem 1.5rem 0.5rem 1.5rem;
+        font-size: 1rem;
+        color: #e0e7ef;
+    }
+    .drawer-contact i { color: var(--primary-blue, #2563eb); margin-right: 0.7rem; }
+    .drawer-social {
+        display: flex; gap: 1.2rem; padding: 0.7rem 1.5rem 1.5rem 1.5rem;
+    }
+    .drawer-social a { color: #fff; font-size: 1.3rem; transition: color 0.2s; }
+    .drawer-social a:hover { color: var(--primary-blue, #2563eb); }
+    .drawer-backdrop {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.32); z-index: 9998; display: none;
+    }
+    .drawer-backdrop.open { display: block; }
+    @media (max-width: 900px) {
+        .nav-container { padding: 0.7rem 1rem !important; }
+        .nav-menu { gap: 1.2rem !important; }
+    }
+    @media (max-width: 768px) {
+        .nav-menu { display: none !important; }
+        .hamburger { display: flex !important; }
+    }
+    </style>
+    <script>
+    // Responsive Navbar Toggle with Drawer
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.getElementById('hamburger');
+        const drawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        const drawerBackdrop = document.getElementById('drawer-backdrop');
+        hamburger.addEventListener('click', function() {
+            drawer.classList.add('open');
+            drawerBackdrop.classList.add('open');
+        });
+        drawerClose.addEventListener('click', function() {
+            drawer.classList.remove('open');
+            drawerBackdrop.classList.remove('open');
+        });
+        drawerBackdrop.addEventListener('click', function() {
+            drawer.classList.remove('open');
+            drawerBackdrop.classList.remove('open');
+        });
+        // Close drawer on link click (mobile)
+        document.querySelectorAll('.drawer-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                drawer.classList.remove('open');
+                drawerBackdrop.classList.remove('open');
+            });
+        });
+    });
+    </script>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -108,25 +238,40 @@
                         Together, we work tirelessly to ensure that underprivileged communities gain access to essential resources,
                         including quality education, clean water, nutritious food, and opportunities for skills development.
                     </p>
-                    <div class="impact-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">2</div>
-                            <div class="stat-label">Years of Impact</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">People Helped</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">10</div>
-                            <div class="stat-label">Donors</div>
-                        </div>
-                    </div>
                 </div>
                 <div class="about-image">
                     <img src="images/cause-3.jpg" alt="Community impact and education" loading="lazy">
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats Section -->
+    <section class="impact-section" style="background:#f7fafd; padding: 64px 0 64px 0;">
+        <div class="container">
+            <div class="impact-stats" style="position:relative; background:none; margin:0 auto; border-radius:32px; overflow:hidden; max-width:1200px;">
+                <div style="position:absolute; inset:0; z-index:1; background:url('gallery/IMG-175.jpg') center/cover no-repeat;"></div>
+                <div style="position:absolute; inset:0; z-index:2; background:linear-gradient(90deg, rgba(37,99,235,0.92) 80%, rgba(37,99,235,0.92) 100%); mix-blend-mode:multiply;"></div>
+                <div style="position:relative; z-index:3; display:flex; justify-content:space-between; align-items:center; padding:2.5rem 1.5rem; gap:2.5rem;">
+                    <div class="stat-item" style="background:transparent; box-shadow:none; text-align:center; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                        <div class="stat-number" style="color:#fff; font-size:2.6rem; font-weight:700; margin-bottom:0.4rem; letter-spacing:1px;">10m+</div>
+                        <div class="stat-label" style="color:#fff; font-family:'Pacifico',cursive; font-size:1.15rem; margin-top:0; letter-spacing:0.5px;">Total donation</div>
+                    </div>
+                    <div class="stat-item" style="background:transparent; box-shadow:none; text-align:center; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                        <div class="stat-number" style="color:#fff; font-size:2.6rem; font-weight:700; margin-bottom:0.4rem; letter-spacing:1px;">100+</div>
+                        <div class="stat-label" style="color:#fff; font-family:'Pacifico',cursive; font-size:1.15rem; margin-top:0; letter-spacing:0.5px;">Projects funded</div>
+                    </div>
+                    <div class="stat-item" style="background:transparent; box-shadow:none; text-align:center; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                        <div class="stat-number" style="color:#fff; font-size:2.6rem; font-weight:700; margin-bottom:0.4rem; letter-spacing:1px;">38%</div>
+                        <div class="stat-label" style="color:#fff; font-family:'Pacifico',cursive; font-size:1.15rem; margin-top:0; letter-spacing:0.5px;">Supports</div>
+                    </div>
+                    <div class="stat-item" style="background:transparent; box-shadow:none; text-align:center; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                        <div class="stat-number" style="color:#fff; font-size:2.6rem; font-weight:700; margin-bottom:0.4rem; letter-spacing:1px;">230</div>
+                        <div class="stat-label" style="color:#fff; font-family:'Pacifico',cursive; font-size:1.15rem; margin-top:0; letter-spacing:0.5px;">Our volunteers</div>
+                    </div>
+                </div>
+            </div>
+            <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
         </div>
     </section>
 
@@ -201,6 +346,45 @@
                         </div>
                         <h3>Community Feeding</h3>
                         <p>Supporting children's education through school supplies, tutoring programs, and scholarship opportunities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News and Articles Section -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title text-center">Latest news and articles</h2>
+            <div class="news-cards-grid">
+                <div class="news-card">
+                    <div class="news-image-wrapper">
+                        <img src="gallery/0278_2024 SAJ Foundation @ Royal Promise By Bliss Studios.jpg" alt="Royal Promise Event">
+                        <div class="news-date-badge">3rd June, 2024</div>
+                    </div>
+                    <div class="news-card-content">
+                        <h3 class="news-title">SAJ Foundation Launches Royal Promise Event</h3>
+                        <a href="article-royal-promise.html" class="news-read-more">&rarr; Read More</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image-wrapper">
+                        <img src="gallery/edu1.jpg" alt="Education Outreach">
+                        <div class="news-date-badge">2nd May, 2024</div>
+                    </div>
+                    <div class="news-card-content">
+                        <h3 class="news-title">Education Outreach Empowers Local Youth</h3>
+                        <a href="article-education-outreach.html" class="news-read-more">&rarr; Read More</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image-wrapper">
+                        <img src="gallery/IMG-175.jpg" alt="Community Gathering">
+                        <div class="news-date-badge">22nd April, 2024</div>
+                    </div>
+                    <div class="news-card-content">
+                        <h3 class="news-title">Community Gathering: Building Stronger Bonds</h3>
+                        <a href="article-community-gathering.html" class="news-read-more">&rarr; Read More</a>
                     </div>
                 </div>
             </div>
@@ -294,19 +478,19 @@
                 <div class="contact-social">
                     <h3>Connect With Us</h3>
                     <div class="social-links">
-                        <a href="#" class="social-link">
+                        <a href="https://facebook.com/sajfoundation" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-facebook"></i>
                             <span>Facebook</span>
                         </a>
-                        <a href="#" class="social-link">
+                        <a href="https://twitter.com/sajfoundation" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-twitter"></i>
                             <span>Twitter</span>
                         </a>
-                        <a href="#" class="social-link">
+                        <a href="https://instagram.com/sajfoundation" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-instagram"></i>
                             <span>Instagram</span>
                         </a>
-                        <a href="#" class="social-link">
+                        <a href="https://linkedin.com/company/sajfoundation" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-linkedin"></i>
                             <span>LinkedIn</span>
                         </a>
@@ -339,30 +523,103 @@
                             <span>₵100 funds a mobile health clinic visit</span>
                         </div>
                     </div>
-                    <div class="donation-options">
-                        <h3>Choose Your Impact</h3>
-                        <div class="donation-amounts">
-                            <button class="amount-btn" data-amount="25">₵25</button>
-                            <button class="amount-btn" data-amount="50">₵50</button>
-                            <button class="amount-btn" data-amount="100">₵100</button>
-                            <button class="amount-btn" data-amount="250">₵250</button>
-                            <button class="amount-btn custom" data-amount="custom">Custom</button>
+                    
+                    <!-- Payment Form -->
+                    <form id="donation-form" class="donation-form">
+                        <div class="donation-options">
+                            <h3>Choose Your Impact</h3>
+                            <div class="donation-amounts">
+                                <button type="button" class="amount-btn" data-amount="25">₵25</button>
+                                <button type="button" class="amount-btn" data-amount="50">₵50</button>
+                                <button type="button" class="amount-btn" data-amount="100">₵100</button>
+                                <button type="button" class="amount-btn" data-amount="250">₵250</button>
+                                <button type="button" class="amount-btn custom" data-amount="custom">Custom</button>
+                            </div>
+                            
+                            <!-- Custom Amount Input -->
+                            <div id="custom-amount-container" class="custom-amount-container" style="display: none;">
+                                <div class="form-group">
+                                    <input type="number" id="custom-amount" name="customAmount" placeholder="Enter amount in Ghana Cedis" min="1" step="0.01">
+                                </div>
+                            </div>
+                            
+                            <div class="donation-frequency">
+                                <label class="frequency-option">
+                                    <input type="radio" name="frequency" value="one-time" checked>
+                                    <span>One-time donation</span>
+                                </label>
+                                <label class="frequency-option">
+                                    <input type="radio" name="frequency" value="monthly">
+                                    <span>Monthly donation</span>
+                                </label>
+                            </div>
+                            
+                            <!-- Donor Information -->
+                            <div class="donor-info">
+                                <h4>Your Information</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <input type="text" id="donor-name" name="donorName" placeholder="Full Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" id="donor-email" name="donorEmail" placeholder="Email Address" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <input type="tel" id="donor-phone" name="donorPhone" placeholder="Phone Number">
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="donor-country" name="donorCountry" required>
+                                            <option value="">Select Country</option>
+                                            <option value="GH">Ghana</option>
+                                            <option value="US">United States</option>
+                                            <option value="UK">United Kingdom</option>
+                                            <option value="CA">Canada</option>
+                                            <option value="AU">Australia</option>
+                                            <option value="DE">Germany</option>
+                                            <option value="FR">France</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea id="donor-message" name="donorMessage" placeholder="Optional: Leave a message of hope" rows="3"></textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Payment Summary -->
+                            <div id="payment-summary" class="payment-summary" style="display: none;">
+                                <h4>Payment Summary</h4>
+                                <div class="summary-item">
+                                    <span>Amount:</span>
+                                    <span id="summary-amount">₵0.00</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span>Frequency:</span>
+                                    <span id="summary-frequency">One-time</span>
+                                </div>
+                                <div class="summary-item total">
+                                    <span>Total:</span>
+                                    <span id="summary-total">₵0.00</span>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-large" id="donate-btn">
+                                <i class="fas fa-heart"></i>
+                                <span id="donate-btn-text">Donate Now</span>
+                                <div id="donate-loading" class="loading-spinner" style="display: none;">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                            </button>
+                            
+                            <!-- Security Notice -->
+                            <div class="security-notice">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Your payment is secured by Paystack. We never store your payment information.</span>
+                            </div>
                         </div>
-                        <div class="donation-frequency">
-                            <label class="frequency-option">
-                                <input type="radio" name="frequency" value="one-time" checked>
-                                <span>One-time donation</span>
-                            </label>
-                            <label class="frequency-option">
-                                <input type="radio" name="frequency" value="monthly">
-                                <span>Monthly donation</span>
-                            </label>
-                        </div>
-                        <button class="btn btn-primary btn-large">
-                            <i class="fas fa-heart"></i>
-                            Donate Now
-                        </button>
-                    </div>
+                    </form>
                 </div>
                 <div class="donate-image">
                     <img src="images/cause-1.jpg" alt="Beneficiary receiving support" loading="lazy">
@@ -379,10 +636,10 @@
                     <h3>SAJ Charity Foundation</h3>
                     <p>Transforming lives through compassion, education, and sustainable community support in Ghana.</p>
                     <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://facebook.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/company/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -426,6 +683,7 @@
     </footer>
 
     <!-- JavaScript -->
+    <script src="paystack-config.js"></script>
     <script src="script.js"></script>
 
     <!-- Lightbox Modal -->
