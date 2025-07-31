@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer - SAJ Charity Foundation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .volunteer-hero {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(30, 64, 175, 0.9)), url('images/cause-3.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 0 80px;
+        }
+        .volunteer-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .volunteer-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .breadcrumb {
+            background: #f8fafc;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .breadcrumb a {
+            color: #64748b;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: #2563eb;
+        }
+        .breadcrumb .separator {
+            margin: 0 0.5rem;
+            color: #cbd5e1;
+        }
+        .volunteer-opportunities {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        .opportunities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .opportunity-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .opportunity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .opportunity-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .opportunity-card h3 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .opportunity-card p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .opportunity-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        .volunteer-form-section {
+            padding: 80px 0;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .form-content h2 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        .form-content p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+        .benefits-list li {
+            padding: 0.5rem 0;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+        }
+        .benefits-list li i {
+            color: #2563eb;
+            margin-right: 0.5rem;
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo/SAJ.png" alt="SAJ Foundation" class="nav-logo-img">
+                <span>SAJ Foundation</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Programs</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="news.html" class="nav-link">News</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="donate.html" class="nav-link">Donate</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container">
+        <a href="index.html">Home</a>
+        <span class="separator">/</span>
+        <span>Volunteer</span>
+    </div>
+</div>
+
+<!-- Back to Home Button -->
+<div class="container" style="padding: 1rem 0;">
+    <a href="index.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+</div>
+
+    <!-- Volunteer Hero -->
+    <section class="volunteer-hero">
+        <div class="container">
+            <h1>Join Our Volunteer Team</h1>
+            <p>Make a difference in your community by volunteering with SAJ Foundation. Your time and skills can help transform lives and create lasting positive change.</p>
+        </div>
+    </section>
+
+    <!-- Volunteer Opportunities -->
+    <section class="volunteer-opportunities">
+        <div class="container">
+            <h2 class="section-title text-center">Volunteer Opportunities</h2>
+            <p class="section-subtitle text-center">Find the perfect way to contribute your time and talents</p>
+            
+            <div class="opportunities-grid">
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Community Feeding</h3>
+                    <p>Help prepare and serve nutritious meals to families in need during our weekly feeding programs.</p>
+                    <div class="opportunity-details">
+                        <span><i class="fas fa-clock"></i> 2-4 hours/week</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Various locations</span>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educational Support</h3>
+                    <p>Provide tutoring, mentoring, and educational support to children in our community programs.</p>
+                    <div class="opportunity-details">
+                        <span><i class="fas fa-clock"></i> 3-6 hours/week</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Community centers</span>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Health Outreach</h3>
+                    <p>Assist with health screenings, education programs, and mobile clinic operations.</p>
+                    <div class="opportunity-details">
+                        <span><i class="fas fa-clock"></i> 4-8 hours/month</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Mobile locations</span>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Event Support</h3>
+                    <p>Help organize and run community events, fundraisers, and awareness campaigns.</p>
+                    <div class="opportunity-details">
+                        <span><i class="fas fa-clock"></i> Flexible hours</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Various venues</span>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Administrative Support</h3>
+                    <p>Provide office support, data entry, social media management, and other administrative tasks.</p>
+                    <div class="opportunity-details">
+                        <span><i class="fas fa-clock"></i> 2-5 hours/week</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Office/Remote</span>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Skills Training</h3>
+                    <p>Share your professional skills by teaching workshops in areas like crafts, technology, or business.</p>
+                    <div class="opportunity-details">
+                        <span><i class="fas fa-clock"></i> 2-4 hours/session</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Training centers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Application Form -->
+    <section class="volunteer-form-section">
+        <div class="container">
+            <div class="form-grid">
+                <div class="form-content">
+                    <h2>Ready to Make a Difference?</h2>
+                    <p>Join our team of dedicated volunteers and help us create positive change in communities across Ghana. We welcome volunteers of all backgrounds and skill levels.</p>
+                    
+                    <h3>Benefits of Volunteering</h3>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check"></i> Make a meaningful impact in your community</li>
+                        <li><i class="fas fa-check"></i> Gain valuable experience and skills</li>
+                        <li><i class="fas fa-check"></i> Meet like-minded people and build connections</li>
+                        <li><i class="fas fa-check"></i> Flexible scheduling to fit your availability</li>
+                        <li><i class="fas fa-check"></i> Receive training and support</li>
+                        <li><i class="fas fa-check"></i> Recognition and appreciation for your contributions</li>
+                    </ul>
+                </div>
+                
+                <div class="form">
+                    <h3>Volunteer Application</h3>
+                    <form id="volunteer-form" action="https://formspree.io/f/meokwgev" method="POST">
+                        <div class="form-group">
+                            <input type="text" id="volunteer-name" name="volunteerName" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="volunteer-email" name="volunteerEmail" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="volunteer-phone" name="volunteerPhone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group" style="width: 100%;">
+                            <select id="volunteer-interest" name="volunteerInterest" required style="width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; background: white; color: #374151; transition: border-color 0.3s ease;">
+                                <option value="">Select Area of Interest</option>
+                                <option value="feeding">Community Feeding</option>
+                                <option value="education">Educational Support</option>
+                                <option value="health">Health Outreach</option>
+                                <option value="events">Event Support</option>
+                                <option value="admin">Administrative Support</option>
+                                <option value="skills">Skills Training</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="width: 100%;">
+                            <select id="volunteer-availability" name="volunteerAvailability" required style="width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; background: white; color: #374151; transition: border-color 0.3s ease;">
+                                <option value="">Select Availability</option>
+                                <option value="weekdays">Weekdays</option>
+                                <option value="weekends">Weekends</option>
+                                <option value="evenings">Evenings</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="volunteer-message" name="volunteerMessage" placeholder="Tell us about your skills, experience, and why you'd like to volunteer" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Application
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Return to Home Section -->
+    <section style="background: #f8fafc; padding: 60px 0; text-align: center;">
+        <div class="container">
+            <h3 style="color: #1e293b; margin-bottom: 1rem;">Join Our Mission</h3>
+            <p style="color: #64748b; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Thank you for your interest in volunteering with SAJ Foundation. 
+                Your time and skills will help us create positive change in communities across Ghana.
+            </p>
+            <a href="index.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-home"></i>
+                Return to Homepage
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SAJ Charity Foundation</h3>
+                    <p>Transforming lives through compassion, education, and sustainable community support in Ghana.</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/sajfoundation_/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/saj-foundation-063b26318/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#projects">Our Programs</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="index.html#contact">Partner With Us</a></li>
+                        <li><a href="index.html#contact">Fundraise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Stay updated with our latest news and impact stories.</p>
+                    <form class="newsletter-form" action="https://formspree.io/f/meokwgev" method="POST">
+                        <input type="hidden" name="subject" value="Newsletter Subscription">
+                        <input type="email" name="email" placeholder="Your email address" required>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SAJ Charity Foundation. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Handle Formspree form submissions for volunteer form
+        document.addEventListener('DOMContentLoaded', function() {
+            const volunteerForm = document.getElementById('volunteer-form');
+            if (volunteerForm) {
+                volunteerForm.addEventListener('submit', function(e) {
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    // Show loading state
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                    submitBtn.disabled = true;
+                    
+                    // Formspree will handle the submission and redirect
+                    // You can add custom success handling here if needed
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

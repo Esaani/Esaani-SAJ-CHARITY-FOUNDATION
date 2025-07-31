@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - SAJ Charity Foundation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .donate-hero {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(30, 64, 175, 0.9)), url('images/cause-1.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 0 80px;
+        }
+        .donate-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .donate-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .breadcrumb {
+            background: #f8fafc;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .breadcrumb a {
+            color: #64748b;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: #2563eb;
+        }
+        .breadcrumb .separator {
+            margin: 0 0.5rem;
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo/SAJ.png" alt="SAJ Foundation" class="nav-logo-img">
+                <span>SAJ Foundation</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Programs</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="news.html" class="nav-link">News</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="donate.html" class="nav-link active">Donate</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <span>Donate</span>
+        </div>
+    </div>
+
+    <!-- Donate Hero -->
+    <section class="donate-hero">
+        <div class="container">
+            <h1>Make a Difference Today</h1>
+            <p>Your donation helps us provide essential services to communities in need across Ghana. Every contribution, no matter the size, makes a real impact.</p>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donate" class="donate">
+        <div class="container">
+            <div class="donate-grid">
+                <div class="donation-form">
+                    <h2>Your Donation</h2>
+                    <p class="section-subtitle">Choose an amount and frequency that works for you</p>
+                    
+                    <form id="donation-form">
+                        <!-- Donation Amount -->
+                        <div class="donation-options">
+                            <h3>Select Amount</h3>
+                            <div class="donation-amounts">
+                                <button type="button" class="amount-btn" data-amount="50">₵50</button>
+                                <button type="button" class="amount-btn" data-amount="100">₵100</button>
+                                <button type="button" class="amount-btn" data-amount="200">₵200</button>
+                                <button type="button" class="amount-btn" data-amount="500">₵500</button>
+                                <button type="button" class="amount-btn custom" data-amount="custom">Custom</button>
+                            </div>
+                            <div class="custom-amount-container" style="display: none;">
+                                <input type="number" id="custom-amount" placeholder="Enter amount in Ghana Cedis" min="1">
+                            </div>
+                        </div>
+
+                        <!-- Donation Frequency -->
+                        <div class="donation-frequency">
+                            <h3>Frequency</h3>
+                            <div class="frequency-option">
+                                <input type="radio" id="one-time" name="frequency" value="one-time" checked>
+                                <label for="one-time">One-time donation</label>
+                            </div>
+                            <div class="frequency-option">
+                                <input type="radio" id="monthly" name="frequency" value="monthly">
+                                <label for="monthly">Monthly recurring</label>
+                            </div>
+                            <div class="frequency-option">
+                                <input type="radio" id="yearly" name="frequency" value="yearly">
+                                <label for="yearly">Yearly recurring</label>
+                            </div>
+                        </div>
+
+                        <!-- Donor Information -->
+                        <div class="donor-info">
+                            <h4>Your Information</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="donor-name" name="donorName" placeholder="Full Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="donor-email" name="donorEmail" placeholder="Email Address" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="tel" id="donor-phone" name="donorPhone" placeholder="Phone Number">
+                                </div>
+                                <div class="form-group" style="width: 100%;">
+                                    <select id="donor-country" name="donorCountry" required style="width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; background: white; color: #374151; transition: border-color 0.3s ease;">
+                                        <option value="">Select Country</option>
+                                        <option value="GH">Ghana</option>
+                                        <option value="US">United States</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="FR">France</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="donor-message" name="donorMessage" placeholder="Optional: Leave a message of hope" rows="3"></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Payment Summary -->
+                        <div id="payment-summary" class="payment-summary" style="display: none;">
+                            <h4>Payment Summary</h4>
+                            <div class="summary-item">
+                                <span>Amount:</span>
+                                <span id="summary-amount">₵0.00</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Frequency:</span>
+                                <span id="summary-frequency">One-time</span>
+                            </div>
+                            <div class="summary-item total">
+                                <span>Total:</span>
+                                <span id="summary-total">₵0.00</span>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large" id="donate-btn">
+                            <i class="fas fa-heart"></i>
+                            <span id="donate-btn-text">Donate Now</span>
+                            <div id="donate-loading" class="loading-spinner" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </button>
+                        
+                        <!-- Security Notice -->
+                        <div class="security-notice">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Your payment is secured by Paystack. We never store your payment information.</span>
+                        </div>
+                    </form>
+                </div>
+                <div class="donate-image">
+                    <img src="images/cause-1.jpg" alt="Beneficiary receiving support" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SAJ Charity Foundation</h3>
+                    <p>Transforming lives through compassion, education, and sustainable community support in Ghana.</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/sajfoundation" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/sajfoundation_/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/saj-foundation-063b26318/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#projects">Our Programs</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="index.html#contact">Partner With Us</a></li>
+                        <li><a href="index.html#contact">Fundraise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Stay updated with our latest news and impact stories.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SAJ Charity Foundation. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="paystack-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

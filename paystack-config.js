@@ -13,8 +13,8 @@ const PAYSTACK_CONFIG = {
         currency: 'GHS',
         country: 'GH',
         language: 'en',
-        callbackUrl: 'https://sajfoundation.org/payment-success',
-        webhookUrl: 'https://sajfoundation.org/payment-webhook',
+        callbackUrl: window.location.origin + '/payment-success.html',
+        webhookUrl: window.location.origin + '/payment-webhook',
     },
     
     // Donation Settings
@@ -57,6 +57,8 @@ class PaystackAPI {
     // Initialize Paystack payment
     async initializePayment(paymentData) {
         try {
+            console.log('Initializing payment with data:', paymentData);
+            
             const response = await fetch(`${this.baseUrl}/transaction/initialize`, {
                 method: 'POST',
                 headers: {
@@ -93,11 +95,16 @@ class PaystackAPI {
                 })
             });
 
+            console.log('Paystack API response status:', response.status);
+
             if (!response.ok) {
+                const errorText = await response.text();
+                console.error('Paystack API error response:', errorText);
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const data = await response.json();
+            console.log('Paystack API response data:', data);
             
             if (data.status && data.data) {
                 return {
