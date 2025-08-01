@@ -552,7 +552,7 @@
     <section id="home" class="hero">
         <div class="hero-background">
             <div class="hero-image-overlay">
-                <div class="hero-slide">
+                <div class="hero-slide active">
                     <img src="images/cause-1.jpg" alt="Community impact" class="hero-bg-image">
                     <div class="hero-caption">Transforming Lives, <span class="highlight">One Act of Kindness</span> at a Time</div>
                 </div>
@@ -569,7 +569,24 @@
                     <div class="hero-caption">Our CEO Wins Ghana C.E.O & <span class="highlight">Industrial Awards 2025</span></div>
                 </div>
             </div>
-            <div class="hero-overlay"></div>
+            
+            <!-- Carousel Navigation -->
+            <!-- <div class="carousel-nav">
+                <button class="carousel-btn carousel-prev" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-next" aria-label="Next slide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div> -->
+            
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+                <button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
+                <button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
+                <button class="indicator" data-slide="3" aria-label="Go to slide 4"></button>
+            </div>
         </div>
         <div class="hero-content">
             <div class="container">
@@ -1353,19 +1370,92 @@
         currentImpactImg = (currentImpactImg + 1) % impactImages.length;
         document.getElementById('impact-bg').style.backgroundImage = `url('${impactImages[currentImpactImg]}')`;
     }, 4000);
-    // Hero slideshow functionality
+    // Hero carousel functionality
     const heroSlides = document.querySelectorAll('.hero-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
     let heroSlideIndex = 0;
+    let autoPlayInterval;
+    
     function showHeroSlide(idx) {
+        // Remove active class from all slides and indicators
         heroSlides.forEach((slide, i) => {
             slide.classList.toggle('active', i === idx);
         });
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === idx);
+        });
     }
-    showHeroSlide(heroSlideIndex);
-    setInterval(() => {
+    
+    function nextSlide() {
         heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
         showHeroSlide(heroSlideIndex);
-    }, 6000);
+    }
+    
+    function prevSlide() {
+        heroSlideIndex = (heroSlideIndex - 1 + heroSlides.length) % heroSlides.length;
+        showHeroSlide(heroSlideIndex);
+    }
+    
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, 6000);
+    }
+    
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+    
+    // Initialize carousel
+    showHeroSlide(heroSlideIndex);
+    startAutoPlay();
+    
+    // Event listeners for navigation buttons
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            stopAutoPlay();
+            prevSlide();
+            startAutoPlay();
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            stopAutoPlay();
+            nextSlide();
+            startAutoPlay();
+        });
+    }
+    
+    // Event listeners for indicators
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            stopAutoPlay();
+            heroSlideIndex = index;
+            showHeroSlide(heroSlideIndex);
+            startAutoPlay();
+        });
+    });
+    
+    // Pause autoplay on hover
+    const heroBackground = document.querySelector('.hero-background');
+    if (heroBackground) {
+        heroBackground.addEventListener('mouseenter', stopAutoPlay);
+        heroBackground.addEventListener('mouseleave', startAutoPlay);
+    }
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            stopAutoPlay();
+            prevSlide();
+            startAutoPlay();
+        } else if (e.key === 'ArrowRight') {
+            stopAutoPlay();
+            nextSlide();
+            startAutoPlay();
+        }
+    });
 
 
     
