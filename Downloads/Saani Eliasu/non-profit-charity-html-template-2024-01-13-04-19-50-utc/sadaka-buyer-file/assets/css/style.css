@@ -1,11 +1,11 @@
 /*-----------------------------------------------------------------
 
-Template Name:  Sadaka - Non Profit Charity HTML Template
+Template Name:  SAJ Foundation HTML
 Author:  Gramentheme
 Author URI: https://themeforest.net/user/gramentheme/portfolio
 Developer: Kawser Ahmed Roni
 Version: 1.0.0
-Description: Sadaka - Non Profit Charity HTML Template
+Description: SAJ Foundation HTML
 
 -------------------------------------------------------------------
 CSS TABLE OF CONTENTS
