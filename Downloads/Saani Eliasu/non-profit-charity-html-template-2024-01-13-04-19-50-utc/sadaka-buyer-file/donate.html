@@ -156,7 +156,7 @@
                         <button class="btn-two btn-donate-highlight" type="button" id="donateDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border: none; background: transparent;">
                             <span class="btn-circle"></span>
                             <span class="btn-inner">
-                                <span class="btn-text">DONATE NOW <i class="fa-solid fa-chevron-down ms-1"></i></span>
+                                <span class="btn-text">Donation NOW <i class="fa-solid fa-chevron-down ms-1"></i></span>
                             </span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="donateDropdown" style="background: #252525; border-radius: 8px; margin-top: 10px;">
@@ -262,9 +262,9 @@
                                 <h4 class="mb-4 text-center" style="color: #252525; font-weight: 800; font-size: 28px;">Direct Payment Details</h4>
                                 <p class="text-center mb-40" style="color: #797979;">Use the details below for manual transfers or scan the QR code to pay instantly.</p>
                                 
-                                <div class="row g-4 justify-content-center align-items-center">
+                                <div class="row g-4 justify-content-center align-items-stretch">
                                     <div class="col-md-6">
-                                        <div class="p-4 h-100" style="background: #f8faff; border: 2px solid #0066cc; border-radius: 16px; position: relative; overflow: hidden;">
+                                        <div class="p-4 h-100 d-flex flex-column justify-content-center" style="background: #f8faff; border: 2px solid #0066cc; border-radius: 16px; position: relative; overflow: hidden;">
                                             <div style="position: absolute; top: -10px; right: -10px; opacity: 0.1; font-size: 80px; color: #0066cc;">
                                                 <i class="fa-solid fa-mobile-screen-button"></i>
                                             </div>
@@ -275,10 +275,10 @@
                                                 <p style="font-size: 18px; color: #252525; font-weight: 700;">SAJ Charity Foundation LBG</p>
                                             </div>
 
-                                            <div class="mb-0">
+                                            <div class="mb-0 mt-auto">
                                                 <p style="font-size: 13px; color: #797979; margin-bottom: 5px; font-weight: 600;">PHONE NUMBER</p>
                                                 <div class="d-flex justify-content-between align-items-center p-3" style="background: #fff; border-radius: 12px; border: 1px solid #e0e0e0;">
-                                                    <span style="font-size: 24px; font-weight: 800; color: #252525; letter-spacing: 2px;">0535352825</span>
+                                                    <span class="momo-number" style="font-size: 24px; font-weight: 800; color: #252525; letter-spacing: 2px;">0535352825</span>
                                                     <button onclick="copyToClipboard('0535352825')" class="btn-copy-momo" title="Copy Number" style="color: #0066cc; background: rgba(0, 102, 204, 0.05); border: none; width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; transition: all 0.3s;">
                                                         <i class="fa-regular fa-copy"></i>
                                                     </button>
@@ -288,7 +288,7 @@
                                     </div>
                                     
                                     <div class="col-md-5">
-                                        <div class="text-center p-4" style="background: #fff; border: 1px solid #eee; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                                        <div class="text-center p-4 h-100 d-flex flex-column justify-content-center align-items-center" style="background: #fff; border: 1px solid #eee; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
                                             <p style="font-size: 14px; color: #252525; font-weight: 700; margin-bottom: 15px;">Scan to Donate (Paystack)</p>
                                             <div class="qr-container mb-3" style="padding: 10px; background: #fff; border: 1px solid #f0f0f0; border-radius: 12px; display: inline-block;">
                                                 <img src="assets/images/paystack-qr.png" alt="Donation QR Code" style="width: 180px; height: 180px; border-radius: 8px;">
@@ -421,7 +421,7 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <div class="donation-options-sidebar" style="background: #fff; border: 1px solid #ddd; padding: 30px; border-radius: 12px;">
+                        <div class="donation-options-sidebar" style="background: #fff; border: 1px solid #ddd; padding: 30px; border-radius: 12px; margin-top: 52px;">
                             <h4 class="mb-20" style="color: #252525;">Donation Options</h4>
                             <div class="option-item active" id="sidebar-financial" onclick="switchMainTab('financial')" style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 15px; margin-bottom: 10px; cursor: pointer;">
                                 <div class="icon" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-hand-holding-dollar"></i></div>
