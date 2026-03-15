@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Sadaka Charity</title>
+    <!-- Favicon img -->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <!-- Bootstarp min css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Mean menu css -->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!-- All min css -->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!-- Style css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .amount-btn {
+            background: #f2f2f2;
+            border: 1px solid #ddd;
+            color: #252525;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        .amount-btn:hover, .amount-btn.active {
+            background: linear-gradient(45deg, #0066cc, #0099ff);
+            border-color: transparent;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+        }
+        .amount-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        @media (max-width: 575px) {
+            .amount-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .method-btn {
+            background: #fff;
+            border: 1px solid #ddd;
+            color: #252525;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .method-btn i { font-size: 24px; color: #797979; }
+        .method-btn.active {
+            border-color: #0066cc;
+            background: rgba(0, 102, 204, 0.05);
+        }
+        .method-btn.active i { color: #0066cc; }
+        .method-btn.active .check-mark {
+            display: block;
+            color: #0066cc;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .method-btn .check-mark { display: none; }
+        .payment-method-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .donation-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #eee;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .donate-tabs button {
+            background: none;
+            border: none;
+            color: #797979;
+            padding: 15px 30px;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .donate-tabs button.active {
+            color: #0066cc;
+            border-bottom-color: #0066cc;
+        }
+        .option-item.active .icon {
+            background: #0066cc;
+            color: #fff;
+        }
+        .zakat-calc-form label {
+            color: #252525;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .input-group-custom input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .input-group-custom input:focus {
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+    </style>
+</head>
+
+<body data-theme="light-donation" style="background: #f8f9fa;">
+
+    <!-- Preloader -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="loading-icon text-center d-flex flex-column align-items-center justify-content-center">
+                    <img class="loading-logo" src="assets/images/preloader.svg" alt="icon">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header-area">
+        <div class="container">
+            <div class="header__main">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo/logo.svg" alt="logo">
+                </a>
+                <div class="main-menu">
+                    <nav>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="cause.html">Causes</a></li>
+                            
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-donate-btn d-none d-lg-inline-block">
+                    <div class="dropdown">
+                        <button class="btn-two btn-donate-highlight" type="button" id="donateDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border: none; background: transparent;">
+                            <span class="btn-circle"></span>
+                            <span class="btn-inner">
+                                <span class="btn-text">DONATE NOW <i class="fa-solid fa-chevron-down ms-1"></i></span>
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="donateDropdown" style="background: #252525; border-radius: 8px; margin-top: 10px;">
+                            <li><a class="dropdown-item py-2 px-4 text-white hover-orange" href="donate.html"><i class="fa-solid fa-hand-holding-dollar me-2"></i> Financial Donation</a></li>
+                            <li><a class="dropdown-item py-2 px-4 text-white hover-orange" href="zakat-calculator.html"><i class="fa-solid fa-calculator me-2"></i> Zakat Calculator</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page banner -->
+        <section class="banner__inner-page bg-image pt-100 pb-100" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/images/banner/banner-inner-page.jpg'); background-size: cover;">
+            <div class="container text-center">
+                <h2 class="text-white">Donate</h2>
+                <div class="breadcrumb-list mt-3">
+                    <a href="index.html" class="text-white">Home</a> <span class="text-white"><i class="fa-regular fa-angles-right mx-2"></i> Donate</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section class="donation-page-area pt-120 pb-120">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="donate-tabs d-flex">
+                            <button class="active" id="form-tab" onclick="switchTab('form')">Donation Form</button>
+                            <button id="details-tab" onclick="switchTab('details')">Payment Details</button>
+                        </div>
+
+                        <div id="donation-form-content">
+                            <div class="donation-card">
+                                <h3 class="mb-30" style="color: #252525;">Make a Donation</h3>
+                                
+                                <!-- Donation Frequency Toggle -->
+                                <div class="donation-type-toggle mb-40" style="background: #f8f9fa; padding: 5px; border-radius: 10px; display: flex; gap: 5px;">
+                                    <button onclick="switchFrequency('one-time')" id="btn-one-time" class="active" style="flex: 1; padding: 12px; border-radius: 8px; font-weight: 600; transition: all 0.3s;">One-time</button>
+                                    <button onclick="switchFrequency('monthly')" id="btn-monthly" style="flex: 1; padding: 12px; border-radius: 8px; font-weight: 600; transition: all 0.3s; color: #797979;">Monthly Support</button>
+                                </div>
+
+                                <!-- One-time Donation Section -->
+                                <div id="one-time-section">
+                                    <div class="mb-4">
+                                        <label class="form-label" style="color: #252525;">Choose Amount (GHS)</label>
+                                        <div class="amount-grid">
+                                            <div class="amount-btn active" onclick="selectAmount(50, this)">50</div>
+                                            <div class="amount-btn" onclick="selectAmount(100, this)">100</div>
+                                            <div class="amount-btn" onclick="selectAmount(1000, this)">1000</div>
+                                            <div class="amount-btn" onclick="toggleCustomAmount()">+ Custom</div>
+                                        </div>
+                                        <div id="custom-amount-input" class="mt-3" style="display: none;">
+                                            <div class="zakat-calc-form">
+                                                <div class="input-group-custom">
+                                                    <input type="number" id="manualAmount" placeholder="Enter custom amount" oninput="updateAmountLabel()" style="background: #fff; border: 1px solid #ddd; color: #252525; padding: 12px; border-radius: 8px; width: 100%;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-40">
+                                        <button class="btn-two btn-donate-highlight w-100 py-3" onclick="startDonation()">
+                                            <span class="btn-circle"></span>
+                                            <span class="btn-inner">
+                                                <span class="btn-text">Donate Securely</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Monthly Subscription Section -->
+                                <div id="monthly-section" style="display: none;">
+                                    <div class="subscription-details p-4 mb-30" style="background: #eef6ff; border: 1px solid #0066cc; border-radius: 12px;">
+                                        <h5 class="mb-2" style="color: #0066cc;">SAJ Foundation Monthly Support</h5>
+                                        <p class="mb-3" style="font-size: 14px; color: #252525;">Support the programs of the SAJ Foundation including orphanage feeding, education for needy children, and health support initiatives in Ghana.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span style="font-weight: 700; font-size: 20px; color: #0066cc;">GHS 20.00</span>
+                                            <span class="badge" style="background: rgba(0, 102, 204, 0.1); color: #0066cc; padding: 8px 12px; border-radius: 20px;">Monthly Plan</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label" style="color: #252525;">Provide your email to subscribe</label>
+                                        <div class="input-group-custom">
+                                            <input type="email" id="subscriberEmail" placeholder="yourname@example.com" style="background: #fff; border: 1px solid #ddd; color: #252525; padding: 12px; border-radius: 8px; width: 100%;">
+                                        </div>
+                                    </div>
+                                    <div class="mt-40">
+                                        <button class="btn-two btn-donate-highlight w-100 py-3" onclick="startSubscription()">
+                                            <span class="btn-circle"></span>
+                                            <span class="btn-inner">
+                                                <span class="btn-text">Subscribe Monthly</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="payment-details-content" style="display: none;">
+                            <div class="donation-card shadow-lg p-5" style="border-radius: 20px; border: 1px solid #eee;">
+                                <h4 class="mb-4 text-center" style="color: #252525; font-weight: 800; font-size: 28px;">Direct Payment Details</h4>
+                                <p class="text-center mb-40" style="color: #797979;">Use the details below for manual transfers or scan the QR code to pay instantly.</p>
+                                
+                                <div class="row g-4 justify-content-center align-items-center">
+                                    <div class="col-md-6">
+                                        <div class="p-4 h-100" style="background: #f8faff; border: 2px solid #0066cc; border-radius: 16px; position: relative; overflow: hidden;">
+                                            <div style="position: absolute; top: -10px; right: -10px; opacity: 0.1; font-size: 80px; color: #0066cc;">
+                                                <i class="fa-solid fa-mobile-screen-button"></i>
+                                            </div>
+                                            <h6 style="color: #0066cc; margin-bottom: 25px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">MTN MoMo (Ghana)</h6>
+                                            
+                                            <div class="mb-20">
+                                                <p style="font-size: 13px; color: #797979; margin-bottom: 5px; font-weight: 600;">ACCOUNT NAME</p>
+                                                <p style="font-size: 18px; color: #252525; font-weight: 700;">SAJ Charity Foundation LBG</p>
+                                            </div>
+
+                                            <div class="mb-0">
+                                                <p style="font-size: 13px; color: #797979; margin-bottom: 5px; font-weight: 600;">PHONE NUMBER</p>
+                                                <div class="d-flex justify-content-between align-items-center p-3" style="background: #fff; border-radius: 12px; border: 1px solid #e0e0e0;">
+                                                    <span style="font-size: 24px; font-weight: 800; color: #252525; letter-spacing: 2px;">0535352825</span>
+                                                    <button onclick="copyToClipboard('0535352825')" class="btn-copy-momo" title="Copy Number" style="color: #0066cc; background: rgba(0, 102, 204, 0.05); border: none; width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; transition: all 0.3s;">
+                                                        <i class="fa-regular fa-copy"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-5">
+                                        <div class="text-center p-4" style="background: #fff; border: 1px solid #eee; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                                            <p style="font-size: 14px; color: #252525; font-weight: 700; margin-bottom: 15px;">Scan to Donate (Paystack)</p>
+                                            <div class="qr-container mb-3" style="padding: 10px; background: #fff; border: 1px solid #f0f0f0; border-radius: 12px; display: inline-block;">
+                                                <img src="assets/images/paystack-qr.png" alt="Donation QR Code" style="width: 180px; height: 180px; border-radius: 8px;">
+                                            </div>
+                                            <p style="font-size: 12px; color: #797979; margin-bottom: 0;">Point your camera or payment app to the QR code above.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-50 text-center">
+                                    <button class="btn-two btn-donate-highlight px-5 py-3" style="min-width: 280px;" onclick="switchTab('form')">
+                                        <span class="btn-circle"></span>
+                                        <span class="btn-inner">
+                                            <span class="btn-text">Return to Donation Form</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Give Items Content -->
+                        <div id="give-items-content" style="display: none;">
+                            <div class="donation-card">
+                                <h3 class="mb-10" style="color: #252525;">How In-Kind Donations Work</h3>
+                                <h6 class="mb-20" style="color: #0066cc;">Donate items, change lives</h6>
+                                <p class="mb-30" style="color: #797979;">In-kind donations allow you to contribute physical items such as clothing, educational materials, medical supplies, and other essentials that directly support our programs and communities.</p>
+                                
+                                <div class="p-3 mb-30" style="background: #f8f9fa; border-left: 4px solid #0066cc; border-radius: 4px;">
+                                    <p style="color: #252525; font-weight: 500; margin-bottom: 0;"><strong>Giving Items:</strong> Share details about the items you wish to donate, and our team will coordinate collection or delivery.</p>
+                                </div>
+
+                                <div class="zakat-calc-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Name</label>
+                                            <div class="input-group-custom">
+                                                <input type="text" placeholder="Your Name" style="background: #fff; border: 1px solid #ddd; color: #252525;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Email</label>
+                                            <div class="input-group-custom">
+                                                <input type="email" placeholder="Your Email" style="background: #fff; border: 1px solid #ddd; color: #252525;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Contact Number</label>
+                                            <div class="input-group-custom">
+                                                <input type="text" placeholder="+233..." style="background: #fff; border: 1px solid #ddd; color: #252525;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Location</label>
+                                            <div class="input-group-custom">
+                                                <input type="text" placeholder="City, Region" style="background: #fff; border: 1px solid #ddd; color: #252525;">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Item Description</label>
+                                            <div class="input-group-custom">
+                                                <textarea placeholder="Tell us what you want to donate (e.g., 5 bags of clothing, school supplies)..." style="width: 100%; min-height: 120px; background: #fff; border: 1px solid #ddd; color: #252525; padding: 12px; border-radius: 8px;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-40">
+                                    <button class="btn-two btn-donate-highlight w-100 py-3">
+                                        <span class="btn-circle"></span>
+                                        <span class="btn-inner">
+                                            <span class="btn-text">Submit Donation Details</span>
+                                        </span>
+                                    </button>
+                                </div>
+                                <p class="mt-3 text-center" style="font-size: 14px; color: #797979; font-style: italic;">All submissions are reviewed to ensure they align with our mission and community needs.</p>
+                            </div>
+                        </div>
+
+                        <!-- Request Items Content -->
+                        <div id="request-items-content" style="display: none;">
+                            <div class="donation-card">
+                                <h3 class="mb-10" style="color: #252525;">Request Items</h3>
+                                <h6 class="mb-20" style="color: #0066cc;">Empowering Communities</h6>
+                                <p class="mb-30" style="color: #797979;">Let us know your community’s needs, and we’ll help connect you with available donations.</p>
+
+                                <div class="zakat-calc-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Community Name</label>
+                                            <div class="input-group-custom">
+                                                <input type="text" placeholder="Community/Org Name" style="background: #fff; border: 1px solid #ddd; color: #252525;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Contact Person</label>
+                                            <div class="input-group-custom">
+                                                <input type="text" placeholder="Your Name" style="background: #fff; border: 1px solid #ddd; color: #252525;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Contact Number</label>
+                                            <div class="input-group-custom">
+                                                <input type="text" placeholder="+233..." style="background: #fff; border: 1px solid #ddd; color: #252525;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Location/City</label>
+                                            <div class="input-group-custom">
+                                                <input type="text" placeholder="Your City/Location" style="background: #fff; border: 1px solid #ddd; color: #252525;">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Items Needed</label>
+                                            <div class="input-group-custom">
+                                                <textarea placeholder="Describe the items needed and why..." style="width: 100%; min-height: 120px; background: #fff; border: 1px solid #ddd; color: #252525; padding: 12px; border-radius: 8px;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-40">
+                                    <button class="btn-two btn-donate-highlight w-100 py-3">
+                                        <span class="btn-circle"></span>
+                                        <span class="btn-inner">
+                                            <span class="btn-text">Submit Request</span>
+                                        </span>
+                                    </button>
+                                </div>
+                                <p class="mt-3 text-center" style="font-size: 14px; color: #797979; font-style: italic;">All submissions are reviewed to ensure they align with our mission and community needs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="donation-options-sidebar" style="background: #fff; border: 1px solid #ddd; padding: 30px; border-radius: 12px;">
+                            <h4 class="mb-20" style="color: #252525;">Donation Options</h4>
+                            <div class="option-item active" id="sidebar-financial" onclick="switchMainTab('financial')" style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 15px; margin-bottom: 10px; cursor: pointer;">
+                                <div class="icon" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                                <div class="text">
+                                    <h6 style="color: #252525; margin: 0;">Financial Donation</h6>
+                                    <span style="font-size: 13px; color: #797979;">Make a monetary contribution</span>
+                                </div>
+                            </div>
+                            <div class="option-item" id="sidebar-give" onclick="switchMainTab('give')" style="border: 1px solid #eee; padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 15px; margin-bottom: 10px; cursor: pointer;">
+                                <div class="icon" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #f2f2f2;"><i class="fa-solid fa-box-heart"></i></div>
+                                <div class="text">
+                                    <h6 style="color: #252525; margin: 0;">Give Items</h6>
+                                    <span style="font-size: 13px; color: #797979;">Donate physical items</span>
+                                </div>
+                            </div>
+                            <div class="option-item" id="sidebar-request" onclick="switchMainTab('request')" style="border: 1px solid #eee; padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 15px; margin-bottom: 10px; cursor: pointer;">
+                                <div class="icon" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #f2f2f2;"><i class="fa-solid fa-hand-heart"></i></div>
+                                <div class="text">
+                                    <h6 style="color: #252525; margin: 0;">Request Items</h6>
+                                    <span style="font-size: 13px; color: #797979;">Request needed items</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-area pt-100 pb-50" style="background: #111;">
+        <div class="container text-center">
+            <p class="text-white">© 2026 Sadaka Charity Foundation. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script>
+        // Force hide preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.getElementById('loading');
+                if (loader) loader.style.display = 'none';
+            }, 500);
+        });
+
+        let selectedAmount = 50;
+
+        function switchMainTab(type) {
+            // Hide all contents
+            document.getElementById('donation-form-content').style.display = 'none';
+            document.getElementById('payment-details-content').style.display = 'none';
+            document.getElementById('give-items-content').style.display = 'none';
+            document.getElementById('request-items-content').style.display = 'none';
+            
+            // Hide/Show Financial Tabs
+            const financialTabs = document.querySelector('.donate-tabs');
+            
+            // Sidebar active state
+            document.querySelectorAll('.option-item').forEach(el => {
+                el.classList.remove('active');
+                el.style.borderColor = '#eee';
+                el.querySelector('.icon').style.background = '#f2f2f2';
+                el.querySelector('.icon').style.color = '#797979';
+            });
+
+            if (type === 'financial') {
+                document.getElementById('donation-form-content').style.display = 'block';
+                financialTabs.style.display = 'flex';
+                const activeSidebar = document.getElementById('sidebar-financial');
+                activeSidebar.classList.add('active');
+                activeSidebar.style.borderColor = '#ddd';
+                activeSidebar.querySelector('.icon').style.background = '#0066cc';
+                activeSidebar.querySelector('.icon').style.color = '#fff';
+                switchTab('form');
+            } else if (type === 'give') {
+                document.getElementById('give-items-content').style.display = 'block';
+                financialTabs.style.display = 'none';
+                const activeSidebar = document.getElementById('sidebar-give');
+                activeSidebar.classList.add('active');
+                activeSidebar.style.borderColor = '#ddd';
+                activeSidebar.querySelector('.icon').style.background = '#0066cc';
+                activeSidebar.querySelector('.icon').style.color = '#fff';
+            } else if (type === 'request') {
+                document.getElementById('request-items-content').style.display = 'block';
+                financialTabs.style.display = 'none';
+                const activeSidebar = document.getElementById('sidebar-request');
+                activeSidebar.classList.add('active');
+                activeSidebar.style.borderColor = '#ddd';
+                activeSidebar.querySelector('.icon').style.background = '#0066cc';
+                activeSidebar.querySelector('.icon').style.color = '#fff';
+            }
+        }
+
+        function switchTab(tab) {
+            if (tab === 'form') {
+                document.getElementById('donation-form-content').style.display = 'block';
+                document.getElementById('payment-details-content').style.display = 'none';
+                document.getElementById('form-tab').classList.add('active');
+                document.getElementById('details-tab').classList.remove('active');
+            } else {
+                document.getElementById('donation-form-content').style.display = 'none';
+                document.getElementById('payment-details-content').style.display = 'block';
+                document.getElementById('form-tab').classList.remove('active');
+                document.getElementById('details-tab').classList.add('active');
+            }
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.createElement('div');
+                toast.innerText = 'Copied to clipboard!';
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.background = '#0066cc';
+                toast.style.color = '#fff';
+                toast.style.padding = '10px 20px';
+                toast.style.borderRadius = '20px';
+                toast.style.zIndex = '10000';
+                toast.style.fontSize = '14px';
+                toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 2000);
+            });
+        }
+
+        function selectAmount(amount, btn) {
+            selectedAmount = amount;
+            document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('custom-amount-input').style.display = 'none';
+        }
+
+        function toggleCustomAmount() {
+            document.getElementById('custom-amount-input').style.display = 'block';
+            document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector('.amount-btn:last-child').classList.add('active');
+        }
+
+        function selectMethod(method, btn) {
+            document.querySelectorAll('.method-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        function switchFrequency(type) {
+            const oneTimeSection = document.getElementById('one-time-section');
+            const monthlySection = document.getElementById('monthly-section');
+            const btnOneTime = document.getElementById('btn-one-time');
+            const btnMonthly = document.getElementById('btn-monthly');
+
+            if (type === 'one-time') {
+                oneTimeSection.style.display = 'block';
+                monthlySection.style.display = 'none';
+                btnOneTime.classList.add('active');
+                btnMonthly.classList.remove('active');
+                btnOneTime.style.color = '#0066cc';
+                btnMonthly.style.color = '#797979';
+            } else {
+                oneTimeSection.style.display = 'none';
+                monthlySection.style.display = 'block';
+                btnOneTime.classList.remove('active');
+                btnMonthly.classList.add('active');
+                btnOneTime.style.color = '#797979';
+                btnMonthly.style.color = '#0066cc';
+            }
+        }
+
+        function startSubscription() {
+            const email = document.getElementById('subscriberEmail').value;
+            if (!email) {
+                alert('Please enter your email address to continue.');
+                return;
+            }
+
+            const handler = PaystackPop.setup({
+                key: 'pk_live_659b88916c7c553c7766e0a3652cbb133e198dfa',
+                email: email,
+                amount: 20 * 100, // GHS 20.00
+                currency: 'GHS',
+                plan: 'PLN_wvgp4o1oykqnnke',
+                callback: function(response) {
+                    alert('Subscription successful! reference: ' + response.reference);
+                },
+                onClose: function() {
+                    alert('Process cancelled.');
+                }
+            });
+            handler.openIframe();
+        }
+
+        function startDonation() {
+            // Redirect to the official Paystack Shop payment page
+            window.location.href = 'https://paystack.shop/pay/sajfoundation-donate';
+        }
+    </script>
+</body>
+</html>
