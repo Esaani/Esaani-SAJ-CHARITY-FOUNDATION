@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakat Calculator - SAJ Foundation</title>
+    <!-- Favicon img -->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <!-- Bootstarp min css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Mean menu css -->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!-- All min css -->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!-- Swiper bundle min css -->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!-- Magnigic popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!-- Animate css -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!-- Nice select css -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!-- Style css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body data-theme="dark-donation" style="background: #1a1b1e;">
+
+    <!-- Preloader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="loading-icon text-center d-flex flex-column align-items-center justify-content-center">
+                    <img class="loading-logo" src="assets/images/preloader.svg" alt="icon">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader area end -->
+
+    <!-- Header area (Copied from index.html for consistency) -->
+    <!-- ... Header content placeholder ... -->
+    <header class="header-area">
+        <div class="container">
+            <div class="header__main">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo/logo.svg" alt="logo">
+                </a>
+                <div class="main-menu">
+                    <nav>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="cause.html">Causes</a></li>
+                            
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-donate-btn d-none d-lg-inline-block">
+                    <div class="dropdown">
+                        <button class="btn-two btn-donate-highlight" type="button" id="donateDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border: none; background: transparent;">
+                            <span class="btn-circle"></span>
+                            <span class="btn-inner">
+                                <span class="btn-text">DONATE NOW <i class="fa-solid fa-chevron-down ms-1"></i></span>
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="donateDropdown" style="background: #252525; border-radius: 8px; margin-top: 10px;">
+                            <li><a class="dropdown-item py-2 px-4 text-white hover-orange" href="donate.html"><i class="fa-solid fa-hand-holding-dollar me-2"></i> Financial Donation</a></li>
+                            <li><a class="dropdown-item py-2 px-4 text-white hover-orange" href="zakat-calculator.html"><i class="fa-solid fa-calculator me-2"></i> Zakat Calculator</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page banner -->
+        <section class="banner__inner-page bg-image pt-100 pb-100" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/images/banner/banner-inner-page.jpg'); background-size: cover;">
+            <div class="container text-center">
+                <h2 class="text-white">Zakat Calculator</h2>
+                <div class="breadcrumb-list mt-3">
+                    <a href="index.html" class="text-white">Home</a> <span class="text-white"><i class="fa-regular fa-angles-right mx-2"></i> Zakat Calculator</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <section class="calculator-area pt-120 pb-120">
+            <div class="container">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="donation-card zakat-calc-form">
+                            <div class="section-header mb-40">
+                                <h3 class="text-white">Calculate your Islamic obligation</h3>
+                                <p class="text-muted">Fill in your wealth amount to determine your Zakat contribution.</p>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="form-label">Wealth Amount (GHS)</label>
+                                <div class="input-group-custom">
+                                    <input type="number" id="wealthAmount" placeholder="Enter your wealth amount" oninput="calculateZakat()">
+                                </div>
+                            </div>
+
+                            <div class="result-area mb-40" id="resultBox" style="display: none;">
+                                <div class="info-box-dark" style="border-color: #28a745;">
+                                    <div class="icon"><i class="fa-solid fa-money-bill-check"></i></div>
+                                    <div class="text">
+                                        <div class="title">Payable Zakat: GH₵ <span id="zakatResult">0.00</span></div>
+                                        <div class="value">Based on 2.5% of your total wealth.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-3">
+                                <button class="btn-inner w-100 py-3" style="background: #292a2e; border: 1px solid #33343a; border-radius: 8px; color: #fff;" onclick="resetCalc()">Reset</button>
+                                <button class="btn-inner w-100 py-3" style="background: var(--donation-accent); border-radius: 8px; color: #fff;" onclick="calculateZakat()">Calculate</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="info-box-dark">
+                            <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+                            <div class="text">
+                                <div class="title">Nisab Threshold: GH₵ 16,500.00</div>
+                                <div class="value">Minimum wealth threshold (87.48 grams of gold equivalent)</div>
+                            </div>
+                        </div>
+                        <div class="info-box-dark">
+                            <div class="icon"><i class="fa-solid fa-percent"></i></div>
+                            <div class="text">
+                                <div class="title">Zakat Rate: 2.5%</div>
+                                <div class="value">Annual rate for cash and savings</div>
+                            </div>
+                        </div>
+                        <div class="info-box-dark">
+                            <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="text">
+                                <div class="title">Lunar Year (Hawl): 354 Days</div>
+                                <div class="value">Required holding period for wealth</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-80">
+                    <div class="col-12">
+                        <div class="section-header mb-40">
+                            <h2 class="text-white">Understanding Zakat</h2>
+                        </div>
+                        <div class="text-white" style="line-height: 1.8;">
+                            <p>Zakat is a form of almsgiving, often collected by the Muslim Ummah. It is considered in Islam as a religious obligation or tax, which, by Quranic ranking, is next after prayer in importance.</p>
+                            <p>As one of the Five Pillars of Islam, zakat is a religious duty for all Muslims who meet the necessary criteria of wealth to help the needy. It is a mandatory charitable contribution, often considered to be a tax.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Area placeholder -->
+    <footer class="footer-area pt-100 pb-50" style="background: #111;">
+        <div class="container text-center">
+            <p class="text-white">© 2026 SAJ Charity Foundation. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Force hide preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.getElementById('loading');
+                if (loader) loader.style.display = 'none';
+            }, 500);
+        });
+
+        function calculateZakat() {
+            const amount = document.getElementById('wealthAmount').value;
+            const nisab = 16500;
+            const resultBox = document.getElementById('resultBox');
+            const zakatView = document.getElementById('zakatResult');
+
+            if (amount >= nisab) {
+                const zakat = amount * 0.025;
+                zakatView.innerText = zakat.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                resultBox.style.display = 'block';
+            } else {
+                resultBox.style.display = 'none';
+            }
+        }
+
+        function resetCalc() {
+            document.getElementById('wealthAmount').value = '';
+            document.getElementById('resultBox').style.display = 'none';
+        }
+    </script>
+    <!-- Vercel Speed Insights -->
+    <script>
+      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

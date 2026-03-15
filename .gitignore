@@ -1,0 +1,28 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+
+# Antigravity / agent files
+.gemini/
+.antigravityignore
+
+# Temp/log files
+*.log
+/tmp/
+
+# Node modules (if any)
+node_modules/
+
+# Python virtual environments
+venv/
+env/

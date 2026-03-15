@@ -1,0 +1,62 @@
+.banner__inner-page {
+  position: relative;
+  z-index: 1;
+}
+
+.banner__inner-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Reduced from default heavy shadow */
+  z-index: -1;
+}
+
+.hover-orange:hover {
+  background: var(--donation-accent) !important;
+  color: #fff !important;
+}
+
+.header-donate-btn .dropdown-toggle::after {
+  display: none;
+}
+
+.header-donate-btn .dropdown-menu {
+  display: none;
+  min-width: 200px;
+}
+
+.header-donate-btn .dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.header-donate-btn .dropdown-item {
+  transition: var(--transition);
+  font-family: var(--quicksand);
+  font-weight: 500;
+}
+
+.btn-donate-highlight {
+  background: linear-gradient(45deg, #f74f22, #ffa500) !important;
+  box-shadow: 0 4px 15px rgba(247, 79, 34, 0.4);
+  animation: pulse-orange 2s infinite;
+  border: none !important;
+}
+
+.btn-donate-highlight .btn-text {
+  color: #fff !important;
+}
+
+@keyframes pulse-orange {
+  0% {
+    box-shadow: 0 0 0 0 rgba(247, 79, 34, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(247, 79, 34, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(247, 79, 34, 0);
+  }
+}
